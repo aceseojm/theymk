@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #143019;
+  --color-leaf: #6BA12B;
+  --color-leaf-bright: #8DC63F;
+  --color-sage: #A7BE89;
+  --color-paper: #F5F6F0;
+  --color-clay: #B06A35;
+
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: "Noto Serif KR", Georgia, serif;
+}
+
+:root {
+  --background: #F5F6F0;
+  --foreground: #143019;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *:not(.hero-gradient):not(.hero-gradient-deep):not(.hero-gradient-overlay) {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #6BA12B;
+  outline-offset: 3px;
+}
+
+/* 히어로 그라데이션 — 연두·흰색 사이를 천천히 이동 */
+@keyframes hero-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    -45deg,
+    #8DC63F,
+    #c5e87a,
+    #ffffff,
+    #a8d850,
+    #ffffff,
+    #8DC63F
+  );
+  background-size: 400% 400%;
+  animation-name: hero-gradient-shift;
+  animation-duration: 8s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* 흰빛 물결 흐르는 오버레이 — 회사소개 히어로 */
+@keyframes white-wave {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient-overlay {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 20%,
+    rgba(255, 255, 255, 0.35) 40%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.35) 60%,
+    rgba(255, 255, 255, 0.0) 80%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  animation-name: white-wave;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* 흰색·보라·핑크 버전 — 상담 신청 히어로 */
+.hero-gradient-deep {
+  background: linear-gradient(
+    -45deg,
+    #ffffff,
+    #e9d5ff,
+    #fbcfe8,
+    #c4b5fd,
+    #ffffff,
+    #f9a8d4
+  );
+  background-size: 400% 400%;
+  animation-name: hero-gradient-shift;
+  animation-duration: 20s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
