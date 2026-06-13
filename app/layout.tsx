@@ -10,6 +10,30 @@ export const metadata: Metadata = {
   },
   description:
     "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량. 주식회사 와이엠케이의 유기질 비료 솔루션.",
+  openGraph: {
+    title: "YMK — 못 구하는 원료, 못 가진 기술",
+    description:
+      "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량. 주식회사 와이엠케이의 유기질 비료 솔루션.",
+    url: "https://theymk.vercel.app",
+    siteName: "YMK",
+    images: [
+      {
+        url: "https://theymk.vercel.app/images/cover.png",
+        width: 1200,
+        height: 630,
+        alt: "YMK 유기질 비료 — 못 구하는 원료, 못 가진 기술",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YMK — 못 구하는 원료, 못 가진 기술",
+    description:
+      "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량.",
+    images: ["https://theymk.vercel.app/images/cover.png"],
+  },
 };
 
 export default function RootLayout({
