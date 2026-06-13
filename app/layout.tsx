@@ -5,15 +5,15 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "YMK — 못 구하는 원료, 못 가진 기술",
+    default: "YMK — 모든 생명을 위한 맞춤 비료",
     template: "%s | YMK",
   },
   description:
-    "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량. 주식회사 와이엠케이의 유기질 비료 솔루션.",
+    "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 주식회사 와이엠케이의 친환경 유기질 비료 솔루션.",
   openGraph: {
-    title: "YMK — 못 구하는 원료, 못 가진 기술",
+    title: "YMK — 모든 생명을 위한 맞춤 비료",
     description:
-      "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량. 주식회사 와이엠케이의 유기질 비료 솔루션.",
+      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 친환경 유기질 비료 솔루션.",
     url: "https://theymk.vercel.app",
     siteName: "YMK",
     images: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://theymk.vercel.app/images/cover.png",
         width: 1200,
         height: 630,
-        alt: "YMK 유기질 비료 — 못 구하는 원료, 못 가진 기술",
+        alt: "YMK 유기질 비료 — 모든 생명을 위한 맞춤 비료",
       },
     ],
     locale: "ko_KR",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "YMK — 못 구하는 원료, 못 가진 기술",
+    title: "YMK — 모든 생명을 위한 맞춤 비료",
     description:
-      "국내 조달 불가능한 OMRI 원료 한국 독점, 40년 펠릿 자동화 기술, 직접 생산 역량.",
+      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 친환경 유기질 비료 솔루션.",
     images: ["https://theymk.vercel.app/images/cover.png"],
   },
 };
