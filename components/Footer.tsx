@@ -19,7 +19,7 @@ export default function Footer() {
               <p className="font-serif text-paper text-lg font-semibold mb-0.5">YMK</p>
               <p className="text-leaf text-[10px] font-medium uppercase tracking-widest mb-2">We Care</p>
               <p className="text-sage text-sm leading-relaxed">
-                {company.name} · 대표이사 {company.ceo}
+                {company.name}
                 <br />
                 사업자등록번호 {company.bizNumber}
                 <br />

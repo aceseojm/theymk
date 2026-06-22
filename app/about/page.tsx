@@ -131,6 +131,57 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 대표이사 인사말 */}
+      <section id="ceo-message" className="relative bg-paper py-24 scroll-mt-20 overflow-hidden border-t border-sage/10">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* 전체 블록을 오른쪽으로 밀기 */}
+          <div className="ml-auto max-w-2xl">
+
+            <p className="text-leaf text-xs uppercase tracking-widest font-medium mb-3">
+              대표이사 인사말
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-forest mb-8">
+              흙에서 시작해, 세상을 바꿉니다
+            </h2>
+
+            {/* 본문 텍스트 */}
+            <div className="space-y-4 text-forest/65 leading-[1.85] text-[15px]">
+              <p>
+                농부가 땅에 씨앗을 묻는 순간,<br />
+                그 손에 쥔 비료가 어떤 것인지가 중요합니다.
+              </p>
+              <p>
+                저는 40년 전 기계를 만들었습니다.<br />
+                정밀하게, 균일하게, 믿을 수 있게 —<br />
+                그 원칙이 지금 비료를 만드는 방식이 됐습니다.
+              </p>
+              <p>
+                지금 YMK는 국내 농업과 골프장을 넘어<br />
+                동남아시아와 해외 유기농 시장으로 나아가고 있습니다.<br />
+                세계 어느 땅에서도 통한다는 것을 보여주고 싶습니다.
+              </p>
+              <p>
+                흙을 살리는 일은 결국 사람을 살리는 일입니다.<br />
+                더 건강한 땅, 더 안전한 먹거리, 더 오래 지속되는 농업 —<br />
+                그것이 우리가 향하는 곳입니다.
+              </p>
+              <p>
+                가고자 하는 방향만큼은 분명합니다.<br />
+                정직한 원료로, 균일한 기술로,<br />
+                땅과 사람 모두에게 부끄럽지 않은 비료를 만드는 것.<br />
+                그 길을 끝까지 걷겠습니다.
+              </p>
+
+              {/* 서명 */}
+              <div className="pt-5 border-t border-sage/20">
+                <p className="text-forest/40 text-xs mb-0.5">주식회사 와이엠케이</p>
+                <p className="text-forest font-bold text-lg">대표이사 강길원</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 연혁 */}
       <section id="history" className="bg-paper py-20 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-6">

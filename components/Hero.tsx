@@ -46,7 +46,7 @@ export default function Hero() {
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
-          ${hovered === "company" ? "w-[50%]" : (hovered === "agri" || hovered === "golf") ? "w-[18%]" : "w-1/3"}
+          ${hovered === "company" ? "w-[50%]" : (hovered === "agri" || hovered === "golf") ? "w-[25%]" : "w-1/3"}
           hidden md:block`}
         style={{ minWidth: 0 }}
         onMouseEnter={() => setHovered("company")}
@@ -116,7 +116,7 @@ export default function Hero() {
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
-          ${hovered === "agri" ? "w-[50%]" : (hovered === "company" || hovered === "golf") ? "w-[18%]" : "w-1/3"}
+          ${hovered === "agri" ? "w-[50%]" : (hovered === "company" || hovered === "golf") ? "w-[25%]" : "w-1/3"}
           hidden md:block`}
         style={{ minWidth: 0 }}
         onMouseEnter={() => setHovered("agri")}
@@ -195,7 +195,7 @@ export default function Hero() {
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
-          ${hovered === "golf" ? "w-[50%]" : (hovered === "company" || hovered === "agri") ? "w-[18%]" : "w-1/3"}
+          ${hovered === "golf" ? "w-[50%]" : (hovered === "company" || hovered === "agri") ? "w-[25%]" : "w-1/3"}
           hidden md:block`}
         style={{ minWidth: 0 }}
         onMouseEnter={() => setHovered("golf")}

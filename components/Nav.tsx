@@ -36,6 +36,7 @@ const resultsDropdown: DropdownItem[] = [
 
 const aboutDropdown: DropdownItem[] = [
   { href: "/about#vision", label: "비전 및 철학", sub: "WE CARE" },
+  { href: "/about#ceo-message", label: "대표이사 인사말", sub: "강길원 대표" },
   { href: "/about#history", label: "연혁", sub: "1984 ~ 현재" },
   { href: "/about#engineering", label: "엔지니어링 역량", sub: "설비 시스템 구축" },
   { href: "/about#partnership", label: "글로벌 파트너십", sub: "대만 영밍 · 중국 G-Teck" },
@@ -44,7 +45,7 @@ const aboutDropdown: DropdownItem[] = [
 const links: NavLink[] = [
   { href: "/about", label: "회사소개", dropdown: aboutDropdown },
   { href: "/why", label: "왜 YMK인가" },
-  { href: "/products", label: "제품", dropdown: productDropdown },
+  { href: "/products", label: "제품 및 원료", dropdown: productDropdown },
   { href: "/audiences", label: "활용 분야", dropdown: audienceDropdown },
   { href: "/results", label: "적용 사례", dropdown: resultsDropdown },
   { href: "/trust", label: "인증 및 특허" },
