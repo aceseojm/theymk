@@ -11,8 +11,8 @@ export default function Trust() {
             신뢰
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-forest">
-            공인기관이 검증하고,{" "}
-            <span className="text-leaf">정부가 등록했습니다</span>
+            <span className="text-leaf">공인기관으로</span>{" "}
+            검증 받았습니다.
           </h2>
           <p className="mt-4 text-forest/70 max-w-xl">
             강원대학교 산학협력단 친환경농산물안전성센터 공시, 특허청 디자인등록 — 성분과 원료는 실제 발급된 서류를 근거로 표기합니다.
