@@ -11,7 +11,7 @@ export default function Trust() {
             신뢰
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-forest">
-            <span className="text-leaf">공인기관으로</span>{" "}
+            <span className="text-leaf">공인기관으로부터</span>{" "}
             검증 받았습니다.
           </h2>
           <p className="mt-4 text-forest/70 max-w-xl">
