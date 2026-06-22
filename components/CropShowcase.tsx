@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const crops = [
   {
-    src: "/images/토마토가_주렁주렁_걸려있는_토마토_202606111216.jpeg",
-    alt: "방울토마토 재배 현장",
+    src: "/images/crop-chamoe.jpg",
+    alt: "참외 재배 현장",
     category: "과채류",
-    name: "방울토마토",
+    name: "참외",
     effects: "당도 향상 · 착색 개선 · 수확량 증대",
     href: "/results#fruitveg",
   },
