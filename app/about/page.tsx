@@ -136,7 +136,7 @@ export default function AboutPage() {
         {/* 배경 — 왼쪽 100% 원본, 오른쪽으로 paper 색 그라데이션 */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <Image
-            src="/images/p-speach jpg.png"
+            src="/images/p-speach.png"
             alt=""
             fill
             className="object-cover object-center"
