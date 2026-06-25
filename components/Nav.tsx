@@ -73,10 +73,12 @@ function DropdownMenu({
       <Link
         href={indexHref}
         role="menuitem"
-        className="flex items-center gap-2 px-4 py-3 text-xs text-sage/60 hover:bg-white/5 hover:text-paper border-b border-white/10 transition-colors"
+        className="flex items-start gap-3 px-4 py-3 text-sage hover:bg-white/5 hover:text-paper border-b border-white/10 transition-colors"
         onClick={onClose}
       >
-        전체 {indexLabel} 보기
+        <div>
+          <p className="text-sm font-medium leading-tight">전체 {indexLabel} 보기</p>
+        </div>
       </Link>
       {items.map((item) => {
         const active = pathname === item.href;
