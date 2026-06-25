@@ -133,6 +133,23 @@ export default function AboutPage() {
 
       {/* 대표이사 인사말 */}
       <section id="ceo-message" className="relative bg-paper py-24 scroll-mt-20 overflow-hidden border-t border-sage/10">
+        {/* 배경 워터마크 */}
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <Image
+            src="/images/p-speach jpg.png"
+            alt=""
+            fill
+            className="object-cover object-center"
+            style={{
+              filter: "saturate(0.3) brightness(1.1)",
+              opacity: 0.12,
+              mixBlendMode: "multiply",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper/60 via-transparent to-paper/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-paper/30 via-transparent to-paper/30" />
+        </div>
+
         <div className="max-w-6xl mx-auto px-6">
           {/* 전체 블록을 오른쪽으로 밀기 */}
           <div className="ml-auto max-w-2xl">
