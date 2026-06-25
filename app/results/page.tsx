@@ -128,8 +128,8 @@ export default function ResultsPage() {
       <section className="relative h-[520px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/crop-tomato.jpg"
-            alt="토마토 재배 현장"
+            src="/images/hero-peach.jpg"
+            alt="복숭아 재배 현장"
             fill
             className="object-cover object-center"
             priority
