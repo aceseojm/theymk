@@ -133,26 +133,26 @@ export default function AboutPage() {
 
       {/* 대표이사 인사말 */}
       <section id="ceo-message" className="relative bg-paper py-24 scroll-mt-20 overflow-hidden border-t border-sage/10">
-        {/* 배경 워터마크 */}
+        {/* 배경 — 왼쪽 100% 원본, 오른쪽으로 paper 색 그라데이션 */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <Image
             src="/images/p-speach jpg.png"
             alt=""
             fill
             className="object-cover object-center"
-            style={{
-              filter: "saturate(0.3) brightness(1.1)",
-              opacity: 0.12,
-              mixBlendMode: "multiply",
-            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-paper/60 via-transparent to-paper/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-paper/30 via-transparent to-paper/30" />
+          {/* 왼쪽 100% → 오른쪽도 이미지 느낌 살리면서 부드럽게 페이드 */}
+          <div className="absolute inset-0"
+            style={{ background: "linear-gradient(to right, transparent 0%, transparent 30%, rgba(245,246,240,0.05) 44%, rgba(245,246,240,0.55) 55%, rgba(245,246,240,0.78) 100%)" }}
+          />
+          {/* 상하 살짝 페이드 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-paper/50 via-transparent to-paper/50" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-6">
-          {/* 전체 블록을 오른쪽으로 밀기 */}
-          <div className="ml-auto max-w-2xl">
+        {/* 텍스트 — z-index로 이미지 위에 확실히 올리기 */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          {/* 텍스트 블록을 더 오른쪽으로 + 왼쪽 오프셋 추가 */}
+          <div className="ml-auto max-w-xl pl-8">
 
             <p className="text-leaf text-xs uppercase tracking-widest font-medium mb-3">
               대표이사 인사말
@@ -162,7 +162,7 @@ export default function AboutPage() {
             </h2>
 
             {/* 본문 텍스트 */}
-            <div className="space-y-4 text-forest/65 leading-[1.85] text-[15px]">
+            <div className="space-y-4 text-forest leading-[1.85] text-[15px]">
               <p>
                 농부가 땅에 씨앗을 묻는 순간,<br />
                 그 손에 쥔 비료가 어떤 것인지가 중요합니다.
@@ -190,8 +190,8 @@ export default function AboutPage() {
               </p>
 
               {/* 서명 */}
-              <div className="pt-5 border-t border-sage/20">
-                <p className="text-forest/40 text-xs mb-0.5">주식회사 와이엠케이</p>
+              <div className="pt-5 border-t border-sage/30">
+                <p className="text-forest/50 text-xs mb-0.5">주식회사 와이엠케이</p>
                 <p className="text-forest font-bold text-lg">대표이사 강길원</p>
               </div>
             </div>
