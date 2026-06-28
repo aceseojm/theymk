@@ -142,7 +142,7 @@ export default function AboutPage() {
           />
           {/* 왼쪽 100% → 오른쪽도 이미지 느낌 살리면서 부드럽게 페이드 */}
           <div className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, transparent 0%, transparent 30%, rgba(245,246,240,0.05) 44%, rgba(245,246,240,0.55) 55%, rgba(245,246,240,0.78) 100%)" }}
+            style={{ background: "linear-gradient(to right, transparent 0%, rgba(245,246,240,0.02) 20%, rgba(245,246,240,0.12) 35%, rgba(245,246,240,0.30) 48%, rgba(245,246,240,0.55) 60%, rgba(245,246,240,0.75) 75%, rgba(245,246,240,0.90) 90%, rgba(245,246,240,0.97) 100%)" }}
           />
           {/* 상하 살짝 페이드 */}
           <div className="absolute inset-0 bg-gradient-to-b from-paper/50 via-transparent to-paper/50" />
@@ -161,7 +161,7 @@ export default function AboutPage() {
             </h2>
 
             {/* 본문 텍스트 */}
-            <div className="space-y-4 text-forest/90 font-medium leading-[1.85] text-[15px]">
+            <div className="space-y-4 text-forest font-medium leading-[1.85] text-[15px]">
               <p>
                 농부가 땅에 씨앗을 묻는 순간,<br />
                 그 손에 쥔 비료가 어떤 것인지가 중요합니다.

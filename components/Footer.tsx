@@ -31,9 +31,6 @@ export default function Footer() {
           </div>
           <div className="text-sage text-xs text-left md:text-right self-end md:self-auto">
             <p>© {new Date().getFullYear()} 주식회사 와이엠케이. All rights reserved.</p>
-            <p className="mt-1 text-sage/50">
-              통신판매업 신고번호 기재 예정
-            </p>
           </div>
         </div>
       </div>
