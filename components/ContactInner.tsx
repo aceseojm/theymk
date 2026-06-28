@@ -52,10 +52,12 @@ export default function ContactInner() {
 
     try {
       // Google Apps Script 웹앱 URL — 배포 후 아래에 입력
-      const APPS_SCRIPT_URL = "APPS_SCRIPT_URL_HERE";
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx2_PasF3dk0mTfMs3yknWi6I0bdCQ27xGxGb2cqa1Jy7aeL1cFNOxHSzoIA6lEu2ox/exec";
 
-      const res = await fetch(APPS_SCRIPT_URL, {
+      // Google Apps Script는 no-cors 모드로 전송 (CORS 제한 우회)
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           company: form.company,
@@ -66,7 +68,6 @@ export default function ContactInner() {
           message: form.message,
         }),
       });
-      if (!res.ok) throw new Error("전송 실패");
       setSubmitted(true);
     } catch {
       setError("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
