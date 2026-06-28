@@ -23,6 +23,8 @@ export default function ContactInner() {
     consent: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const set =
     (field: keyof FormState) =>
@@ -38,10 +40,23 @@ export default function ContactInner() {
       setForm((prev) => ({ ...prev, [field]: value }));
     };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 실제 전송 연동 (이메일/DB/API)
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("전송 실패");
+      setSubmitted(true);
+    } catch {
+      setError("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -177,12 +192,15 @@ export default function ContactInner() {
         </label>
       </div>
 
+      {error && (
+        <p className="text-red-500 text-sm text-center">{error}</p>
+      )}
       <button
         type="submit"
-        disabled={!form.consent}
+        disabled={!form.consent || sending}
         className="w-full py-3.5 rounded-xl bg-forest text-paper font-semibold hover:bg-leaf transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        상담 신청하기
+        {sending ? "전송 중..." : "상담 신청하기"}
       </button>
     </form>
   );
