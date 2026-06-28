@@ -134,6 +134,7 @@ export default function ResultsPage() {
             className="object-cover object-center"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
         </div>
 
         <div className="absolute inset-0 flex flex-col justify-end pb-12 max-w-6xl mx-auto px-6 w-full left-0 right-0">
