@@ -109,7 +109,7 @@ function CropImage({ src, label, isBefore }: { src: string; label: string; isBef
         className="object-cover"
         sizes="(max-width: 768px) 50vw, 25vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
       <span
         className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold backdrop-blur-sm ${
           isBefore ? "bg-black/45 text-white/85" : "bg-leaf/75 text-white"
