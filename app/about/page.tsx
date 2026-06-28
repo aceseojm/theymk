@@ -82,8 +82,8 @@ export default function AboutPage() {
             <span className="text-leaf-bright">약속</span>
           </h1>
           <p className="text-white/75 text-lg max-w-xl leading-relaxed drop-shadow-sm">
-            1984년 공장 자동화 전문 기업으로 시작해, 40년의 엔지니어링
-            경험을 친환경 유기질 비료 펠렛 자동화로 집중한 기업입니다.
+            흙을 살리는 비료, 작물을 돌보는 원료. OMRI 인증 원료로 만든
+            유기질 비료로 사람과 자연이 함께 건강해집니다.
           </p>
         </div>
       </section>
