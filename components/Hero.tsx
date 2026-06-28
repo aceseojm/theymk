@@ -13,7 +13,7 @@ export default function Hero() {
           중앙 타이틀 (호버 전에만 표시)
       ────────────────────────────────────── */}
       <div
-        className={`absolute top-0 left-0 right-0 bottom-0 z-30 flex flex-col items-center justify-center pointer-events-none transition-all duration-500 ${
+        className={`absolute top-0 left-0 right-0 bottom-0 z-30 hidden md:flex flex-col items-center justify-center pointer-events-none transition-all duration-500 ${
           hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}
       >

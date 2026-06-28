@@ -18,12 +18,14 @@ export default function Footer() {
             <div>
               <p className="font-serif text-paper text-lg font-semibold mb-0.5">YMK</p>
               <p className="text-leaf text-[10px] font-medium uppercase tracking-widest mb-2">We Care</p>
-              <p className="text-sage text-sm leading-relaxed">
+              <p className="text-sage text-xs leading-relaxed">
                 {company.name}
                 <br />
                 사업자등록번호 {company.bizNumber}
                 <br />
                 {company.address}
+                <br />
+                Tel. 031.8018.2034 &nbsp;|&nbsp; Fax. 031.8018.2033
               </p>
             </div>
           </div>
