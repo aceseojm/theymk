@@ -101,14 +101,18 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── 구분선 1 ── */}
+      {/* ── 구분선 1 + YMK 배지 ── */}
       <div
         className="relative z-20 hidden md:flex flex-shrink-0 items-center justify-center"
         style={{
           width: "2px",
           background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.25) 25%, rgba(255,255,255,0.25) 75%, transparent 100%)",
         }}
-      />
+      >
+        <div className="absolute w-11 h-11 rounded-full bg-forest/90 border border-white/25 flex items-center justify-center shadow-2xl backdrop-blur-sm">
+          <span className="text-leaf-bright text-[9px] font-bold tracking-widest">YMK</span>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════
           가운데 패널 — 농업 · 작물
