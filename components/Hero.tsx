@@ -76,7 +76,7 @@ export default function Hero() {
               hovered === "company" ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"
             }`}
           >
-            40년 엔지니어링,<br />친환경 비료로
+            땅을 아끼고,<br />생명을 돌봅니다
           </h2>
           <div className={`overflow-hidden transition-all duration-500 ${
             hovered === "company" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
@@ -265,7 +265,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div className="relative">
             <span className="text-leaf-bright text-[10px] uppercase tracking-widest font-semibold mb-2 block">회사소개</span>
-            <h2 className="text-white text-xl font-bold mb-2 leading-tight">40년 엔지니어링,<br />친환경 비료로</h2>
+            <h2 className="text-white text-xl font-bold mb-2 leading-tight">땅을 아끼고,<br />생명을 돌봅니다</h2>
             <span className="text-white/65 text-sm">회사소개 →</span>
           </div>
         </Link>
