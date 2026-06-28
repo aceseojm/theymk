@@ -70,8 +70,7 @@ export default function AboutPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="hero-gradient-overlay absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         </div>
         <div className="absolute inset-0 flex flex-col justify-end pb-12 max-w-6xl mx-auto px-6 w-full left-0 right-0">
           <p className="text-leaf-bright text-xs uppercase tracking-widest font-medium mb-3">
