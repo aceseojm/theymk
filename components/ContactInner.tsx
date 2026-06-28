@@ -44,11 +44,24 @@ export default function ContactInner() {
     e.preventDefault();
     setSending(true);
     setError("");
+
+    const typeLabel: Record<string, string> = {
+      bulk: "대량 구매", golf: "골프장 도입", oem: "OEM·ODM",
+      export: "수출 파트너십", home: "홈가드닝 소량 구매", other: "기타",
+    };
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://formspree.io/f/FORM_ID_HERE", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          회사명: form.company || "—",
+          담당자: form.name,
+          연락처: form.phone,
+          이메일: form.email || "—",
+          문의유형: typeLabel[form.type] || form.type || "—",
+          문의내용: form.message || "—",
+        }),
       });
       if (!res.ok) throw new Error("전송 실패");
       setSubmitted(true);
