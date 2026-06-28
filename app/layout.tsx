@@ -4,6 +4,9 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  verification: {
+    google: "jjaHryYzjw01yYYC3I-GXjLImb5FIPikyKluYMRSjvs",
+  },
   title: {
     default: "YMK — 모든 생명을 위한 맞춤 비료",
     template: "%s | YMK",
