@@ -51,16 +51,19 @@ export default function ContactInner() {
     };
 
     try {
-      const res = await fetch("https://formspree.io/f/FORM_ID_HERE", {
+      // Google Apps Script 웹앱 URL — 배포 후 아래에 입력
+      const APPS_SCRIPT_URL = "APPS_SCRIPT_URL_HERE";
+
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          회사명: form.company || "—",
-          담당자: form.name,
-          연락처: form.phone,
-          이메일: form.email || "—",
-          문의유형: typeLabel[form.type] || form.type || "—",
-          문의내용: form.message || "—",
+          company: form.company,
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          type: typeLabel[form.type] || form.type,
+          message: form.message,
         }),
       });
       if (!res.ok) throw new Error("전송 실패");
