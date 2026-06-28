@@ -161,7 +161,7 @@ export default function AboutPage() {
             </h2>
 
             {/* 본문 텍스트 */}
-            <div className="space-y-4 text-forest leading-[1.85] text-[15px]">
+            <div className="space-y-4 text-forest/90 font-medium leading-[1.85] text-[15px]">
               <p>
                 농부가 땅에 씨앗을 묻는 순간,<br />
                 그 손에 쥔 비료가 어떤 것인지가 중요합니다.
