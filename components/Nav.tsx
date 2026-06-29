@@ -193,12 +193,12 @@ export default function Nav() {
           <li>
             <button
               onClick={toggle}
-              className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/20 text-xs text-sage hover:border-white/40 transition-colors ml-2"
+              className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 border border-white/30 text-xs hover:bg-white/25 hover:border-white/50 transition-all ml-2 backdrop-blur-sm"
               aria-label="Switch language"
             >
-              <span className={lang === "ko" ? "text-paper font-semibold" : "text-sage/40"}>KO</span>
-              <span className="text-white/20 mx-0.5">|</span>
-              <span className={lang === "en" ? "text-paper font-semibold" : "text-sage/40"}>EN</span>
+              <span className={lang === "ko" ? "text-paper font-bold" : "text-white/40"}>KO</span>
+              <span className="text-white/30 mx-0.5">|</span>
+              <span className={lang === "en" ? "text-paper font-bold" : "text-white/40"}>EN</span>
             </button>
           </li>
         </ul>
