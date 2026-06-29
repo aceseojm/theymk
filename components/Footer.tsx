@@ -27,11 +27,11 @@ export default function Footer() {
               <p className="font-serif text-paper text-lg font-semibold mb-0.5">YMK</p>
               <p className="text-leaf text-[10px] font-medium uppercase tracking-widest mb-2">We Care</p>
               <p className="text-sage text-xs leading-relaxed">
-                {company.name}
+                {lang === "ko" ? company.name : company.nameEn}
                 <br />
                 {t.bizNumber} {company.bizNumber}
                 <br />
-                {company.address}
+                {lang === "ko" ? company.address : company.addressEn}
                 <br />
                 Tel. 031.8018.2034 &nbsp;|&nbsp; Fax. 031.8018.2033
               </p>

@@ -1,8 +1,10 @@
 export const company = {
   name: "주식회사 와이엠케이",
+  nameEn: "YMK Co., Ltd.",
   ceo: "강길원",
   bizNumber: "787-86-03087",
   address: "경기도 성남시 중원구 사기막골로45번길 14, 비동 1309호 (상대원동)",
+  addressEn: "14, Sagimakgol-ro 45beon-gil, Jungwon-gu, Seongnam-si, Gyeonggi-do, Republic of Korea",
   email: "contact@ymk.co.kr",
 };
 
