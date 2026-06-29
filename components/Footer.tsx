@@ -33,7 +33,7 @@ export default function Footer() {
                 <br />
                 {lang === "ko" ? company.address : company.addressEn}
                 <br />
-                Tel. 031.8018.2034 &nbsp;|&nbsp; Fax. 031.8018.2033
+                Tel. {lang === "ko" ? company.tel : company.telEn} &nbsp;|&nbsp; Fax. {lang === "ko" ? company.fax : company.faxEn}
               </p>
             </div>
           </div>

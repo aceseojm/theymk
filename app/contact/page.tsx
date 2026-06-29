@@ -53,6 +53,10 @@ export default function ContactPage() {
                   {lang === "ko" ? "사업자" : "Biz. Reg."} {company.bizNumber}
                   <br />
                   {lang === "ko" ? company.address : company.addressEn}
+                  <br />
+                  Tel. {lang === "ko" ? company.tel : company.telEn}
+                  <br />
+                  Fax. {lang === "ko" ? company.fax : company.faxEn}
                 </p>
               </div>
 

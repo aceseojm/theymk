@@ -5,6 +5,10 @@ export const company = {
   bizNumber: "787-86-03087",
   address: "경기도 성남시 중원구 사기막골로45번길 14, 비동 1309호 (상대원동)",
   addressEn: "14, Sagimakgol-ro 45beon-gil, Jungwon-gu, Seongnam-si, Gyeonggi-do, Republic of Korea",
+  tel: "031.8018.2034",
+  fax: "031.8018.2033",
+  telEn: "+82.31.8018.2034",
+  faxEn: "+82.31.8018.2033",
   email: "contact@ymk.co.kr",
 };
 
