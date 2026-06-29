@@ -16,7 +16,7 @@ export const en = {
     aboutVision: "Vision & Philosophy",
     aboutVisionSub: "WE CARE",
     aboutCeo: "CEO Message",
-    aboutCeoSub: "Kang Gil-won, CEO",
+    aboutCeoSub: "Kil Won, Kang — CEO",
     aboutHistory: "History",
     aboutHistorySub: "1984 ~ Present",
     aboutEngineering: "Engineering Capabilities",
@@ -237,7 +237,7 @@ export const en = {
     ],
     ceoContent: {
       company: "YMK Co., Ltd.",
-      ceoTitle: "CEO Kang Gil-won",
+      ceoTitle: "CEO Kil Won, Kang",
     },
   },
 
