@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { whyItems } from "@/lib/data";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 const icons: Record<string, React.ReactNode> = {
   globe: (
@@ -21,37 +26,62 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
+const enWhyItems = [
+  {
+    icon: "globe",
+    title: "OMRI-Certified Ingredients, Exclusively Sourced Domestically",
+    body: "OMRI (Organic Materials Review Institute) is an independent US organization that assesses international standard compliance of organic agricultural material ingredients. YMK is the sole domestic supplier of ingredients from China's G-Teck Bioscience (Xian) that meet these standards.",
+    detail: "Origin: G-Teck Bioscience (Xian), China",
+  },
+  {
+    icon: "gear",
+    title: "40 Years of Pellet Automation Technology",
+    body: "YMK holds the longest pellet automation experience in the domestic fertilizer industry. Uniform pellet size and density are essential for preventing mechanical spreader blockages and accurately controlling application rates.",
+    detail: "Optimized for mechanical spreading on golf courses and large farmland",
+  },
+  {
+    icon: "factory",
+    title: "In-house Production with Lot-by-Lot Quality Verification",
+    body: "Without outsourcing, we operate the entire process in-house — from raw material intake to finished product shipment. Third-party analysis reports (Bito Analysis Center) are issued for every production lot.",
+    detail: "Analysis reports provided separately to B2B partners",
+  },
+];
+
 export default function WhySection() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.whySection : en.whySection;
+  const items = lang === "ko" ? whyItems : enWhyItems;
+
   return (
     <section id="why" className="bg-paper py-24">
       <div className="max-w-6xl mx-auto px-6">
-        {/* 섹션 헤더 */}
+        {/* Section header */}
         <div className="mb-16">
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-3">
-            왜 YMK인가
+            {t.label}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-forest max-w-xl leading-snug">
-            원료부터 생산까지,{" "}
-            <span className="text-leaf">YMK가 직접 관리합니다</span>
+            {t.title1}{" "}
+            <span className="text-leaf">{t.title2}</span>
           </h2>
           <p className="mt-4 text-forest/70 max-w-xl">
-            원료 수급, 제조 공정, 품질 관리 — 세 가지를 모두 자체적으로 운영합니다.
+            {t.subtitle}
           </p>
         </div>
 
-        {/* 더 보기 링크 */}
+        {/* More link */}
         <div className="mb-10">
           <Link
             href="/why"
             className="inline-flex items-center gap-2 text-sm text-leaf hover:text-leaf-bright transition-colors font-medium"
           >
-            YMK를 선택하는 이유 →
+            {t.ctaLink}
           </Link>
         </div>
 
-        {/* 카드 그리드 */}
+        {/* Card grid */}
         <div className="grid md:grid-cols-3 gap-8">
-          {whyItems.map((item, i) => (
+          {items.map((item, i) => (
             <div
               key={i}
               className="bg-white rounded-2xl p-8 border border-sage/20 hover:border-leaf/40 transition-colors group"

@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { audiences } from "@/lib/data";
-
-export const metadata: Metadata = {
-  title: "활용 분야",
-  description:
-    "농업 B2B, 골프장, OEM·ODM, 수출, 홈가드닝 — 구매 목적별로 알맞은 방법을 안내합니다.",
-};
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 const cardBg: Record<string, string> = {
   "agri-b2b": "bg-leaf",
@@ -49,31 +47,44 @@ const cardImage: Record<string, string | null> = {
   home: "/images/homegarden.png",
 };
 
+const enAudienceMap: Record<string, { title: string; subtitle: string; desc: string; cta: string }> = {
+  "agri-b2b": { title: "Agriculture B2B", subtitle: "Bulk Purchase · Distribution", desc: "Bulk purchases of 1 ton or more, nationwide distribution contracts available. Lot-by-lot test reports and certifications provided.", cta: "Bulk Purchase Inquiry" },
+  golf: { title: "Golf Course", subtitle: "Green · Fairway Management", desc: "Uniform pellets optimized for mechanical spreading. No spreader blockages with 40 years of automation technology.", cta: "Golf Course Solution Inquiry" },
+  oem: { title: "OEM·ODM", subtitle: "Custom Branding", desc: "Ingredient blend, packaging, and branding customization. Consultation available from small sample quantities.", cta: "OEM Proposal Request" },
+  export: { title: "Export", subtitle: "Southeast Asia · Overseas Supply", desc: "OMRI-based products well-suited for entry into overseas organic certification markets.", cta: "Export Partner Inquiry" },
+  home: { title: "Home Gardening", subtitle: "Small Quantity Purchase", desc: "For home gardens and balcony planters. Odor-free pellet type, usable indoors.", cta: "Small Purchase Inquiry" },
+};
+
 export default function AudiencesPage() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.audiencesPage : en.audiencesPage;
+
   return (
     <>
-      {/* 히어로 */}
+      {/* Hero */}
       <section className="bg-forest pt-32 pb-20">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">
-            활용 분야
-          </p>
+          <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">{t.label}</p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-6 max-w-2xl">
-            같은 제품,{" "}
-            <span className="text-leaf-bright">다양한 현장</span>
+            {t.title}{" "}
+            <span className="text-leaf-bright">{t.titleHighlight}</span>
           </h1>
-          <p className="text-sage text-lg max-w-xl leading-relaxed">
-            두 종류의 유기질 비료를 활용 목적에 맞게 적용할 수 있습니다.
-          </p>
+          <p className="text-sage text-lg max-w-xl leading-relaxed">{t.subtitle}</p>
         </div>
       </section>
 
-      {/* 카드 그리드 */}
+      {/* Card grid */}
       <section className="bg-paper py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {audiences.map((seg) => {
               const img = cardImage[seg.id];
+              const enData = enAudienceMap[seg.id];
+              const title = lang === "ko" ? seg.title : enData.title;
+              const subtitle = lang === "ko" ? seg.subtitle : enData.subtitle;
+              const desc = lang === "ko" ? seg.desc : enData.desc;
+              const cta = lang === "ko" ? seg.cta : enData.cta;
+
               return (
                 <Link
                   key={seg.id}
@@ -82,41 +93,27 @@ export default function AudiencesPage() {
                 >
                   {img && (
                     <>
-                      <Image
-                        src={img}
-                        alt={seg.title}
-                        fill
-                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      />
+                      <Image src={img} alt={title} fill className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-transparent" />
                     </>
                   )}
                   <div className="relative z-10">
-
                     <p className={`text-xs font-medium uppercase tracking-widest mb-1 ${img ? "text-white/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" : textSub[seg.id]}`}>
-                      {seg.subtitle}
+                      {subtitle}
                     </p>
                     <h2 className={`text-xl font-bold mb-3 ${img ? "text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]" : textMain[seg.id]}`}>
-                      {seg.title}
+                      {title}
                     </h2>
                     <p className={`text-sm leading-relaxed ${img ? "text-white/85 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" : textSub[seg.id]}`}>
-                      {seg.desc}
+                      {desc}
                     </p>
                   </div>
                   <div className="relative z-10 mt-6">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                        img ? "bg-white/15 border border-white/40 text-white hover:bg-white/25" : ctaStyle[seg.id]
-                      }`}
-                    >
-                      자세히 보기
-                      <svg
-                        className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                      >
+                    <span className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      img ? "bg-white/15 border border-white/40 text-white hover:bg-white/25" : ctaStyle[seg.id]
+                    }`}>
+                      {t.viewDetail}
+                      <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
@@ -128,20 +125,13 @@ export default function AudiencesPage() {
         </div>
       </section>
 
-      {/* 하단 CTA */}
+      {/* Bottom CTA */}
       <section className="bg-forest py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-paper mb-4">
-            어떤 항목인지 잘 모르겠다면 바로 문의하세요
-          </h2>
-          <p className="text-sage mb-8">
-            구매 규모나 용도를 말씀해 주시면 적합한 방법을 안내해 드립니다.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3.5 rounded-full bg-leaf text-white font-semibold hover:bg-leaf-bright transition-colors"
-          >
-            상담 신청하기 →
+          <h2 className="text-2xl font-bold text-paper mb-4">{t.ctaTitle}</h2>
+          <p className="text-sage mb-8">{t.ctaDesc}</p>
+          <Link href="/contact" className="inline-block px-8 py-3.5 rounded-full bg-leaf text-white font-semibold hover:bg-leaf-bright transition-colors">
+            {t.ctaContact}
           </Link>
         </div>
       </section>

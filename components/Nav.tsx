@@ -5,109 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { audiences, products } from "@/lib/data";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 type DropdownItem = { href: string; label: string; sub?: string };
 
 type NavLink =
   | { href: string; label: string; dropdown?: undefined }
   | { href: string; label: string; dropdown: DropdownItem[] };
-
-const productDropdown: DropdownItem[] = [
-  ...products.map((p) => ({
-    href: `/products/${p.id}`,
-    label: p.name,
-    sub: p.nameEn,
-  })),
-  { href: "/products/ingredients", label: "원료 소개", sub: "OMRI 인증 7종" },
-];
-
-const audienceDropdown: DropdownItem[] = audiences.map((a) => ({
-  href: `/audiences/${a.id}`,
-  label: a.title,
-  sub: a.subtitle,
-}));
-
-const resultsDropdown: DropdownItem[] = [
-  { href: "/results#vegetable", label: "채소류", sub: "마늘·양파·배추" },
-  { href: "/results#fruitveg", label: "과채류", sub: "청양고추·호박" },
-  { href: "/results#fruit", label: "과수", sub: "복분자·유자·샤인머스켓" },
-  { href: "/results#rice", label: "수도작", sub: "수도작(벼)" },
-];
-
-const aboutDropdown: DropdownItem[] = [
-  { href: "/about#vision", label: "비전 및 철학", sub: "WE CARE" },
-  { href: "/about#ceo-message", label: "대표이사 인사말", sub: "강길원 대표" },
-  { href: "/about#history", label: "연혁", sub: "1984 ~ 현재" },
-  { href: "/about#engineering", label: "엔지니어링 역량", sub: "설비 시스템 구축" },
-  { href: "/about#partnership", label: "글로벌 파트너십", sub: "대만 영밍 · 중국 G-Teck" },
-];
-
-const links: NavLink[] = [
-  { href: "/about", label: "회사소개", dropdown: aboutDropdown },
-  { href: "/why", label: "왜 YMK인가" },
-  { href: "/products", label: "제품 및 원료", dropdown: productDropdown },
-  { href: "/audiences", label: "활용 분야", dropdown: audienceDropdown },
-  { href: "/results", label: "적용 사례", dropdown: resultsDropdown },
-  { href: "/trust", label: "인증 및 특허" },
-  { href: "/contact", label: "상담 신청" },
-];
-
-function DropdownMenu({
-  items,
-  indexHref,
-  indexLabel,
-  onClose,
-  pathname,
-}: {
-  items: DropdownItem[];
-  indexHref: string;
-  indexLabel: string;
-  onClose: () => void;
-  pathname: string;
-}) {
-  return (
-    <div
-      role="menu"
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-forest/98 backdrop-blur-sm rounded-2xl border border-white/10 shadow-xl overflow-hidden"
-    >
-      <Link
-        href={indexHref}
-        role="menuitem"
-        className="flex items-start gap-3 px-4 py-3 text-sage hover:bg-white/5 hover:text-paper border-b border-white/10 transition-colors"
-        onClick={onClose}
-      >
-        <div>
-          <p className="text-sm font-medium leading-tight">전체 {indexLabel} 보기</p>
-        </div>
-      </Link>
-      {items.map((item) => {
-        const active = pathname === item.href;
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            role="menuitem"
-            className={`flex items-start gap-3 px-4 py-3 transition-colors ${
-              active
-                ? "bg-leaf/20 text-leaf-bright"
-                : "text-sage hover:bg-white/5 hover:text-paper"
-            }`}
-            onClick={onClose}
-          >
-            <div>
-              <p className={`text-sm font-medium leading-tight ${active ? "text-leaf-bright" : ""}`}>
-                {item.label}
-              </p>
-              {item.sub && (
-                <p className="text-xs text-sage/40 mt-0.5">{item.sub}</p>
-              )}
-            </div>
-          </Link>
-        );
-      })}
-    </div>
-  );
-}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -116,6 +22,52 @@ export default function Nav() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const { lang, toggle } = useLang();
+  const t = lang === "ko" ? ko.nav : en.nav;
+
+  const productDropdown: DropdownItem[] = [
+    ...products.map((p) => ({
+      href: `/products/${p.id}`,
+      label: lang === "ko" ? p.name : p.nameEn,
+      sub: lang === "ko" ? p.nameEn : p.name,
+    })),
+    {
+      href: "/products/ingredients",
+      label: t.ingredients,
+      sub: t.ingredientsSub,
+    },
+  ];
+
+  const audienceDropdown: DropdownItem[] = audiences.map((a) => ({
+    href: `/audiences/${a.id}`,
+    label: lang === "ko" ? a.title : (enAudienceTitles[a.id] ?? a.title),
+    sub: lang === "ko" ? a.subtitle : (enAudienceSubtitles[a.id] ?? a.subtitle),
+  }));
+
+  const resultsDropdown: DropdownItem[] = [
+    { href: "/results#vegetable", label: t.resultsVegetable, sub: t.resultsVegetableSub },
+    { href: "/results#fruitveg", label: t.resultsFruitveg, sub: t.resultsFruitvegSub },
+    { href: "/results#fruit", label: t.resultsFruit, sub: t.resultsFruitSub },
+    { href: "/results#rice", label: t.resultsRice, sub: t.resultsRiceSub },
+  ];
+
+  const aboutDropdown: DropdownItem[] = [
+    { href: "/about#vision", label: t.aboutVision, sub: t.aboutVisionSub },
+    { href: "/about#ceo-message", label: t.aboutCeo, sub: t.aboutCeoSub },
+    { href: "/about#history", label: t.aboutHistory, sub: t.aboutHistorySub },
+    { href: "/about#engineering", label: t.aboutEngineering, sub: t.aboutEngineeringSub },
+    { href: "/about#partnership", label: t.aboutPartnership, sub: t.aboutPartnershipSub },
+  ];
+
+  const links: NavLink[] = [
+    { href: "/about", label: t.about, dropdown: aboutDropdown },
+    { href: "/why", label: t.why },
+    { href: "/products", label: t.products, dropdown: productDropdown },
+    { href: "/audiences", label: t.audiences, dropdown: audienceDropdown },
+    { href: "/results", label: t.results, dropdown: resultsDropdown },
+    { href: "/trust", label: t.trust },
+    { href: "/contact", label: t.contact },
+  ];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -133,7 +85,6 @@ export default function Nav() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // 페이지 이동 시 드롭다운 닫기
   useEffect(() => {
     setOpenDropdown(null);
     setMobileOpen(false);
@@ -150,12 +101,12 @@ export default function Nav() {
       }`}
     >
       <nav ref={navRef} className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* 로고 */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative w-10 h-10 flex-shrink-0">
             <Image
               src="/images/ymk-logo-new.png"
-              alt="YMK 로고"
+              alt="YMK Logo"
               fill
               className="object-contain"
               priority
@@ -168,7 +119,7 @@ export default function Nav() {
           </span>
         </Link>
 
-        {/* 데스크탑 메뉴 */}
+        {/* Desktop menu */}
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => {
             const isActive =
@@ -208,6 +159,7 @@ export default function Nav() {
                       indexLabel={l.label}
                       onClose={() => setOpenDropdown(null)}
                       pathname={pathname}
+                      viewAllText={lang === "ko" ? `전체 ${l.label} 보기` : `View All ${l.label}`}
                     />
                   )}
                 </li>
@@ -236,13 +188,26 @@ export default function Nav() {
               </li>
             );
           })}
+
+          {/* Language toggle */}
+          <li>
+            <button
+              onClick={toggle}
+              className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/20 text-xs text-sage hover:border-white/40 transition-colors ml-2"
+              aria-label="Switch language"
+            >
+              <span className={lang === "ko" ? "text-paper font-semibold" : "text-sage/40"}>KO</span>
+              <span className="text-white/20 mx-0.5">|</span>
+              <span className={lang === "en" ? "text-paper font-semibold" : "text-sage/40"}>EN</span>
+            </button>
+          </li>
         </ul>
 
-        {/* 모바일 햄버거 */}
+        {/* Mobile hamburger */}
         <button
           className="md:hidden text-paper p-2 -mr-2"
           onClick={() => setMobileOpen((v) => !v)}
-          aria-label="메뉴 열기"
+          aria-label={t.openMenu}
           aria-expanded={mobileOpen}
         >
           <span className="block w-5 h-0.5 bg-current mb-1" />
@@ -251,7 +216,7 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* 모바일 드롭다운 */}
+      {/* Mobile dropdown */}
       {mobileOpen && (
         <div className="md:hidden bg-forest/97 backdrop-blur-sm border-t border-white/10">
           <ul className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
@@ -290,7 +255,7 @@ export default function Nav() {
                             className="block py-1.5 px-2 text-xs text-sage/50 hover:text-paper"
                             onClick={() => setMobileOpen(false)}
                           >
-                            전체 {l.label}
+                            {lang === "ko" ? `전체 ${l.label}` : `All ${l.label}`}
                           </Link>
                         </li>
                         {l.dropdown.map((item) => (
@@ -331,9 +296,98 @@ export default function Nav() {
                 </li>
               );
             })}
+
+            {/* Mobile language toggle */}
+            <li className="pt-2 border-t border-white/10 mt-2">
+              <button
+                onClick={toggle}
+                className="flex items-center gap-2 py-2 text-sm"
+                aria-label="Switch language"
+              >
+                <span className={lang === "ko" ? "text-paper font-semibold" : "text-sage/40"}>KO</span>
+                <span className="text-white/20">|</span>
+                <span className={lang === "en" ? "text-paper font-semibold" : "text-sage/40"}>EN</span>
+              </button>
+            </li>
           </ul>
         </div>
       )}
     </header>
   );
 }
+
+function DropdownMenu({
+  items,
+  indexHref,
+  indexLabel: _indexLabel,
+  onClose,
+  pathname,
+  viewAllText,
+}: {
+  items: DropdownItem[];
+  indexHref: string;
+  indexLabel: string;
+  onClose: () => void;
+  pathname: string;
+  viewAllText: string;
+}) {
+  return (
+    <div
+      role="menu"
+      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-forest/98 backdrop-blur-sm rounded-2xl border border-white/10 shadow-xl overflow-hidden"
+    >
+      <Link
+        href={indexHref}
+        role="menuitem"
+        className="flex items-start gap-3 px-4 py-3 text-sage hover:bg-white/5 hover:text-paper border-b border-white/10 transition-colors"
+        onClick={onClose}
+      >
+        <div>
+          <p className="text-sm font-medium leading-tight">{viewAllText}</p>
+        </div>
+      </Link>
+      {items.map((item) => {
+        const active = pathname === item.href;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            role="menuitem"
+            className={`flex items-start gap-3 px-4 py-3 transition-colors ${
+              active
+                ? "bg-leaf/20 text-leaf-bright"
+                : "text-sage hover:bg-white/5 hover:text-paper"
+            }`}
+            onClick={onClose}
+          >
+            <div>
+              <p className={`text-sm font-medium leading-tight ${active ? "text-leaf-bright" : ""}`}>
+                {item.label}
+              </p>
+              {item.sub && (
+                <p className="text-xs text-sage/40 mt-0.5">{item.sub}</p>
+              )}
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+// English audience titles/subtitles for nav dropdown
+const enAudienceTitles: Record<string, string> = {
+  "agri-b2b": "Agriculture B2B",
+  golf: "Golf Course",
+  oem: "OEM·ODM",
+  export: "Export",
+  home: "Home Gardening",
+};
+
+const enAudienceSubtitles: Record<string, string> = {
+  "agri-b2b": "Bulk Purchase · Distribution",
+  golf: "Green · Fairway Management",
+  oem: "Custom Branding",
+  export: "Southeast Asia · Overseas",
+  home: "Small Quantity Purchase",
+};

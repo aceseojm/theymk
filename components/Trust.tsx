@@ -1,33 +1,77 @@
+"use client";
+
 import Link from "next/link";
 import { trustItems } from "@/lib/data";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
+
+const enTrustItems = [
+  {
+    badge: "Cert. · HP",
+    title: "HUMAS PREMIUM Organic Materials Certification",
+    number: "No. 공시-2-3-974",
+    issuer: "Kangwon National University, Center for Eco-friendly Agricultural Product Safety",
+    period: "Valid: 2026.02.26 ~ 2029.02.25",
+    detail: "Organic materials certification per Fertilizer Management Act. Component labeling is exactly as stated in the certification.",
+  },
+  {
+    badge: "Cert. · AG",
+    title: "AMINO GOLD Organic Materials Certification",
+    number: "Cert. number to be registered",
+    issuer: "Organic materials certification obtained",
+    period: "Certification renewal scheduled",
+    detail: "AMINO GOLD is also registered as an organic materials certified product.",
+  },
+  {
+    badge: "Design Reg.",
+    title: "Design Registration Rights (2 Products)",
+    number: "No. 30-1350642 et al.",
+    issuer: "Korean Intellectual Property Office",
+    period: "Fertilizer packaging bags — HUMAS PREMIUM · AMINO GOLD",
+    detail: "Both products protect brand assets through packaging design registration.",
+  },
+  {
+    badge: "OMRI Ingredients",
+    title: "OMRI Ingredient Standard",
+    number: "Ingredient standard applied",
+    issuer: "Organic Materials Review Institute",
+    period: "Supplied by G-Teck Bioscience (Xian)",
+    detail: "OMRI certification refers to ingredient standards. Do not confuse with finished product OMRI Listed® labeling.",
+  },
+];
 
 export default function Trust() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.trustSection : en.trustSection;
+  const displayItems = lang === "ko" ? trustItems : enTrustItems;
+
   return (
     <section id="trust" className="bg-paper py-24">
       <div className="max-w-6xl mx-auto px-6">
-        {/* 헤더 */}
+        {/* Header */}
         <div className="mb-16">
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-3">
-            신뢰
+            {t.label}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-forest">
-            <span className="text-leaf">공인기관으로부터</span>{" "}
-            검증 받았습니다.
+            <span className="text-leaf">{t.title1}</span>{" "}
+            {t.title2}
           </h2>
           <p className="mt-4 text-forest/70 max-w-xl">
-            강원대학교 산학협력단 친환경농산물안전성센터 공시, 특허청 디자인등록 — 성분과 원료는 실제 발급된 서류를 근거로 표기합니다.
+            {t.subtitle}
           </p>
           <Link
             href="/trust"
             className="inline-flex items-center gap-2 mt-4 text-sm text-leaf hover:text-leaf-bright transition-colors font-medium"
           >
-            공시·인증 상세 보기 →
+            {t.ctaLink}
           </Link>
         </div>
 
-        {/* 인증 카드 */}
+        {/* Certification cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {trustItems.map((item, i) => (
+          {displayItems.map((item, i) => (
             <div key={i} className="bg-white rounded-2xl p-7 border border-sage/20">
               <span className="inline-block px-3 py-1 rounded-full bg-forest text-leaf-bright text-xs font-bold mb-4">
                 {item.badge}
@@ -45,42 +89,23 @@ export default function Trust() {
           ))}
         </div>
 
-        {/* 투명성 선언 블록 */}
+        {/* Transparency declaration block */}
         <div className="rounded-2xl bg-forest p-10 text-center">
           <h3 className="text-2xl font-bold text-paper mb-4">
-            YMK 투명성 선언
+            {t.declarationTitle}
           </h3>
           <p className="text-sage max-w-2xl mx-auto leading-relaxed mb-6">
-            저희는 효능·효과를 단정하는 표현을 쓰지 않습니다.
-            공시서에 기재된 성분과 원료를 사실 그대로 공개하고,
-            분석성적서는 B2B 파트너에게 별도 제공합니다.
-            과장이 넘치는 시장에서 정직함이 우리의 차별점입니다.
+            {t.declarationBody}
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-leaf-bright">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sage">효능 단정 카피 없음</span>
-            </div>
-            <div className="flex items-center gap-2 text-leaf-bright">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sage">원료 배합 전체 공개</span>
-            </div>
-            <div className="flex items-center gap-2 text-leaf-bright">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sage">공시서 기재 기준 표기</span>
-            </div>
-            <div className="flex items-center gap-2 text-leaf-bright">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sage">성적서 B2B 별도 제공</span>
-            </div>
+            {t.items.map((item) => (
+              <div key={item} className="flex items-center gap-2 text-leaf-bright">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sage">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

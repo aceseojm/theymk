@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { LangProvider } from "@/context/LangContext";
 
 export const metadata: Metadata = {
   verification: {
@@ -65,9 +66,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LangProvider>
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   );

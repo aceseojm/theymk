@@ -1,11 +1,19 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { rawIngredients } from "@/lib/data";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
-export const metadata: Metadata = {
-  title: "원료 소개 — OMRI 인증 원료 7종",
-  description:
-    "식물성 아미노산, 휴믹산, 풀빅산, 알긴산, 해조추출물, 미라클510, YK2 — YMK 제품에 사용되는 OMRI 기준 원료 7종을 소개합니다.",
+const ingredientEnNames: Record<string, string> = {
+  "amino-acid": "Plant-Based Amino Acids",
+  "humic-acid": "Humic Acid",
+  "fulvic-acid": "Fulvic Acid",
+  "alginic-acid": "Alginic Acid",
+  "seaweed-extract": "Seaweed Extract",
+  "miracle-510": "Miracle 510",
+  "yk2": "YK2",
 };
 
 // OMRI Listed 원료 카드 색상
@@ -19,39 +27,50 @@ const accent = [
   { bg: "bg-forest", text: "text-paper", sub: "text-sage" },
 ];
 
+const enBadges = [
+  { label: "Amino Acid Cert.", category: "NOP Amino Acids", product: "Soy Proteins" },
+  { label: "Alginic Acid", category: "NOP Humic Acids – alkali extracted", product: "Potassium Humate" },
+  { label: "Humic Acid", category: "NOP Seaweed and Seaweed Products", product: "Seaweed Extract" },
+];
+
 export default function IngredientsPage() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.ingredientsPage : en.ingredientsPage;
+
+  const badges = lang === "ko"
+    ? [
+        { label: "아미노산 인증", category: "NOP Amino Acids", product: "Soy Proteins" },
+        { label: "알긴산", category: "NOP Humic Acids – alkali extracted", product: "Potassium Humate" },
+        { label: "휴믹산", category: "NOP Seaweed and Seaweed Products", product: "Seaweed Extract" },
+      ]
+    : enBadges;
+
   return (
     <>
-      {/* 히어로 */}
+      {/* Hero */}
       <section className="bg-forest pt-32 pb-20">
         <div className="max-w-6xl mx-auto px-6">
-          {/* 브레드크럼 */}
+          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs mb-8" aria-label="breadcrumb">
             <Link href="/products" className="text-white/50 hover:text-white hover:underline">
-              제품
+              {t.breadcrumb}
             </Link>
             <span className="text-white/25">/</span>
-            <span className="text-white/75">원료 소개</span>
+            <span className="text-white/75">{t.breadcrumbSub}</span>
           </nav>
 
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">
-            03 · 원료 소개
+            {t.label}
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-6 max-w-2xl">
-            미국 협회 인증 원료,{" "}
-            <span className="text-leaf-bright">7종</span>
+            {t.title}{" "}
+            <span className="text-leaf-bright">{t.titleHighlight}</span>
           </h1>
-          <p className="text-sage text-lg max-w-xl leading-relaxed mb-10">
-            YMK 제품에 사용되는 모든 원료는 OMRI(Organic Materials Review Institute) 기준을 충족합니다. 아래 인증서가 그 근거입니다.
-          </p>
+          <p className="text-sage text-lg max-w-xl leading-relaxed mb-10">{t.subtitle}</p>
 
-          {/* OMRI 인증 3종 배지 */}
+          {/* OMRI cert 3 badges */}
           <div className="grid sm:grid-cols-3 gap-4 max-w-2xl">
-            {[
-              { label: "아미노산 인증", category: "NOP Amino Acids", product: "Soy Proteins" },
-              { label: "알긴산", category: "NOP Humic Acids – alkali extracted", product: "Potassium Humate" },
-              { label: "휴믹산", category: "NOP Seaweed and Seaweed Products", product: "Seaweed Extract" },
-            ].map((cert) => (
+            {badges.map((cert) => (
               <div key={cert.label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
                 <div className="w-10 h-10 rounded-full bg-leaf/20 flex items-center justify-center mx-auto mb-3">
                   <span className="text-leaf-bright font-bold text-xs">OMRI</span>
@@ -64,18 +83,18 @@ export default function IngredientsPage() {
 
           <div className="mt-8 flex flex-wrap gap-6 text-sm">
             <div>
-              <p className="text-sage/50 text-xs mb-1">원료 특성</p>
+              <p className="text-sage/50 text-xs mb-1">{t.charLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {["고품질 원료 사용", "OMRI 인증 획득", "수용성 및 유기농", "다양한 영양소 함유"].map((t) => (
-                  <span key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sage text-xs">{t}</span>
+                {t.charItems.map((tag) => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sage text-xs">{tag}</span>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-sage/50 text-xs mb-1">원료의 역할</p>
+              <p className="text-sage/50 text-xs mb-1">{t.roleLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {["생육 활성화", "토양 개량", "병충해 저항성", "작물 품질 향상"].map((t) => (
-                  <span key={t} className="px-3 py-1 rounded-full bg-leaf/10 border border-leaf/20 text-leaf-bright text-xs">{t}</span>
+                {t.roleItems.map((tag) => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-leaf/10 border border-leaf/20 text-leaf-bright text-xs">{tag}</span>
                 ))}
               </div>
             </div>
@@ -83,10 +102,10 @@ export default function IngredientsPage() {
         </div>
       </section>
 
-      {/* 원료 7종 */}
+      {/* Ingredient 7 items */}
       <section className="bg-paper py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-forest mb-12">원료 상세</h2>
+          <h2 className="text-2xl font-bold text-forest mb-12">{t.detailTitle}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {rawIngredients.map((ing, i) => {
               const c = accent[i % accent.length];
@@ -102,7 +121,9 @@ export default function IngredientsPage() {
                         {ing.no}
                       </span>
                       <div>
-                        <h3 className={`text-lg font-bold ${c.text}`}>{ing.name}</h3>
+                        <h3 className={`text-lg font-bold ${c.text}`}>
+                          {lang === "ko" ? ing.name : (ingredientEnNames[ing.id] ?? ing.name)}
+                        </h3>
                         <p className={`text-xs ${c.sub}`}>{ing.source}</p>
                       </div>
                     </div>
@@ -110,7 +131,7 @@ export default function IngredientsPage() {
                     <div className="grid grid-cols-2 gap-x-6 gap-y-0 mb-5">
                       <div>
                         <p className={`text-xs font-medium uppercase tracking-widest mb-2 ${c.sub}`}>
-                          원료 특징
+                          {t.featureLabel}
                         </p>
                         <ul className="space-y-1.5">
                           {ing.features.map((f, j) => (
@@ -123,7 +144,7 @@ export default function IngredientsPage() {
                       </div>
                       <div>
                         <p className={`text-xs font-medium uppercase tracking-widest mb-2 ${c.sub}`}>
-                          작용 효과
+                          {t.effectLabel}
                         </p>
                         <p className={`text-sm leading-relaxed ${c.sub}`}>{ing.effects}</p>
                       </div>
@@ -134,7 +155,7 @@ export default function IngredientsPage() {
                         ? "bg-forest/5 text-forest/50"
                         : "bg-white/10 text-white/40"
                     }`}>
-                      OMRI 분류: {ing.omriCategory}
+                      {t.omriLabel} {ing.omriCategory}
                     </div>
                   </div>
                 </div>
@@ -144,33 +165,27 @@ export default function IngredientsPage() {
         </div>
       </section>
 
-      {/* 하단 CTA */}
+      {/* Bottom CTA */}
       <section className="bg-forest py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-paper mb-4">
-            원료가 만들어낸 제품을 확인하세요
-          </h2>
-          <p className="text-sage mb-8">
-            OMRI 인증 원료가 집약된 두 가지 제품 — 휴머스 프리미엄과 아미노 골드
-          </p>
+          <h2 className="text-2xl font-bold text-paper mb-4">{t.ctaTitle}</h2>
+          <p className="text-sage mb-8">{t.ctaDesc}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/products/humus-premium"
               className="px-6 py-3 rounded-full bg-leaf text-white font-medium hover:bg-leaf-bright transition-colors"
             >
-              휴머스 프리미엄 보기
+              {t.ctaHumus}
             </Link>
             <Link
               href="/products/amino-gold"
               className="px-6 py-3 rounded-full border border-sage/30 text-sage hover:text-paper hover:border-white/40 transition-colors"
             >
-              아미노 골드 보기
+              {t.ctaAmino}
             </Link>
           </div>
           <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-sage/40 text-xs">
-              OMRI 표기는 원료 기준이며, 완제품 OMRI Listed® 인증과 다릅니다.
-            </p>
+            <p className="text-sage/40 text-xs">{t.omriNote}</p>
           </div>
         </div>
       </section>

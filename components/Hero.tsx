@@ -2,47 +2,48 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 export default function Hero() {
   const [hovered, setHovered] = useState<"company" | "agri" | "golf" | null>(null);
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.hero : en.hero;
 
   return (
-    <section className="relative h-screen flex overflow-hidden" aria-label="메인 히어로">
+    <section className="relative h-screen flex overflow-hidden" aria-label="Main hero">
 
-      {/* ──────────────────────────────────────
-          중앙 타이틀 (호버 전에만 표시)
-      ────────────────────────────────────── */}
+      {/* Center title (shown when not hovering) */}
       <div
         className={`absolute top-0 left-0 right-0 bottom-0 z-30 hidden md:flex flex-col items-center justify-center pointer-events-none transition-all duration-500 ${
           hovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}
       >
         <span className="text-white/50 text-[10px] uppercase tracking-[0.35em] font-medium mb-4">
-          YMK · We Care
+          {t.badge}
         </span>
         <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold text-center leading-tight drop-shadow-2xl px-4">
-          모든 생명을 위한
+          {t.title1}
           <br />
-          <span className="text-leaf-bright">맞춤 비료</span>
+          <span className="text-leaf-bright">{t.title2}</span>
         </h1>
         <div className="flex items-center gap-5 mt-8">
           <span className="flex items-center gap-1.5 text-white/45 text-xs tracking-wide">
-            회사소개
+            {t.hint1}
           </span>
           <div className="w-px h-5 bg-white/20" />
           <span className="flex items-center gap-1.5 text-white/45 text-xs tracking-wide">
-            농업 · 작물
+            {t.hint2}
           </span>
           <div className="w-px h-5 bg-white/20" />
           <span className="flex items-center gap-1.5 text-white/45 text-xs tracking-wide">
-            골프장 · 조경
+            {t.hint3}
           </span>
         </div>
       </div>
 
-      {/* ══════════════════════════════════════
-          왼쪽 패널 — 회사소개
-      ══════════════════════════════════════ */}
+      {/* Left panel — Company */}
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
@@ -69,25 +70,25 @@ export default function Hero() {
         />
         <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-14">
           <span className="text-leaf-bright text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 block drop-shadow">
-            회사소개 · About YMK
+            {t.companyBadge}
           </span>
           <h2
             className={`text-white font-bold leading-tight mb-4 drop-shadow-lg transition-all duration-500 ${
               hovered === "company" ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"
             }`}
           >
-            땅을 아끼고,<br />생명을 돌봅니다
+            {t.companyTitle1}<br />{t.companyTitle2}
           </h2>
           <div className={`overflow-hidden transition-all duration-500 ${
             hovered === "company" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}>
             <p className="text-white/75 text-sm max-w-sm leading-relaxed mb-6">
-              1984년 공장 자동화 전문 기업으로 시작해 친환경 유기질 비료 펠렛 자동화 시스템 선도 기업으로 성장한 YMK입니다.
+              {t.companyDesc}
             </p>
             <div className="flex gap-3 flex-wrap">
               <Link href="/about"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 border border-white/40 text-white font-semibold hover:bg-leaf hover:border-leaf transition-colors text-sm backdrop-blur-sm shadow-lg">
-                회사소개 →
+                {t.companyCta}
               </Link>
             </div>
           </div>
@@ -101,7 +102,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── 구분선 1 + YMK 배지 ── */}
+      {/* Divider 1 */}
       <div
         className="relative z-20 hidden md:flex flex-shrink-0 items-center justify-center"
         style={{
@@ -114,9 +115,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════
-          가운데 패널 — 농업 · 작물
-      ══════════════════════════════════════ */}
+      {/* Center panel — Agriculture */}
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
@@ -143,30 +142,31 @@ export default function Hero() {
         />
         <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-14">
           <span className="text-leaf-bright text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 block drop-shadow">
-            농업 · 원예 · B2B
+            {t.agriBadge}
           </span>
           <h2
             className={`text-white font-bold leading-tight mb-4 drop-shadow-lg transition-all duration-500 ${
               hovered === "agri" ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"
             }`}
           >
-            작물과 농지를 위한<br />YMK 유기질 비료
+            {t.agriTitle1}<br />{t.agriTitle2}
           </h2>
           <div className={`overflow-hidden transition-all duration-500 ${
             hovered === "agri" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}>
             <p className="text-white/75 text-sm max-w-sm leading-relaxed mb-6">
-              과채류·채소·수도작·과수 등 다양한 작물에 적용.
-              OMRI 인증 원료 기반 펠릿형(휴머스 프리미엄)과 액체형(아미노 골드).
+              {t.agriDesc.split("\n").map((line, i) => (
+                <span key={i}>{line}{i < t.agriDesc.split("\n").length - 1 && <br />}</span>
+              ))}
             </p>
             <div className="flex gap-3 flex-wrap">
               <Link href="/products"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-leaf text-white font-semibold hover:bg-leaf-bright transition-colors text-sm shadow-lg">
-                제품 보기 →
+                {t.agriCtaProducts}
               </Link>
               <Link href="/audiences/agri-b2b"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/40 text-white/85 hover:text-white hover:border-white/70 transition-colors text-sm backdrop-blur-sm">
-                농업 B2B 안내
+                {t.agriCtaAudiences}
               </Link>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── 구분선 2 + YMK 배지 ── */}
+      {/* Divider 2 */}
       <div
         className="relative z-20 hidden md:flex flex-shrink-0 items-center justify-center"
         style={{
@@ -193,9 +193,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════
-          오른쪽 패널 — 골프장 · 조경
-      ══════════════════════════════════════ */}
+      {/* Right panel — Golf */}
       <div
         className={`relative flex-shrink-0 overflow-hidden cursor-pointer
           transition-[width] duration-700 ease-in-out
@@ -222,26 +220,27 @@ export default function Hero() {
         />
         <div className="absolute inset-0 flex flex-col justify-end items-end text-right p-10 md:p-14">
           <span className="text-leaf text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 block drop-shadow">
-            골프장 · 조경 · 잔디
+            {t.golfBadge}
           </span>
           <h2
             className={`text-white font-bold leading-tight mb-4 drop-shadow-lg transition-all duration-500 ${
               hovered === "golf" ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"
             }`}
           >
-            코스 품질을 높이는<br />YMK 프리미엄 비료
+            {t.golfTitle1}<br />{t.golfTitle2}
           </h2>
           <div className={`overflow-hidden transition-all duration-500 ${
             hovered === "golf" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}>
             <p className="text-white/75 text-sm max-w-sm leading-relaxed mb-6 ml-auto">
-              그린·페어웨이·티잉구역 구역별 맞춤 시비.
-              무취 설계로 이용객 불편 없이 운영 중 적용 가능.
+              {t.golfDesc.split("\n").map((line, i) => (
+                <span key={i}>{line}{i < t.golfDesc.split("\n").length - 1 && <br />}</span>
+              ))}
             </p>
             <div className="flex gap-3 flex-wrap justify-end">
               <Link href="/audiences/golf"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 border border-white/40 text-white font-semibold hover:bg-leaf hover:border-leaf transition-colors text-sm backdrop-blur-sm shadow-lg">
-                골프장 솔루션 →
+                {t.golfCta}
               </Link>
             </div>
           </div>
@@ -255,18 +254,16 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════
-          모바일 — 수직 스택 (터치 탭으로 이동)
-      ══════════════════════════════════════ */}
+      {/* Mobile — vertical stack */}
       <div className="md:hidden w-full flex flex-col h-full">
         <Link href="/about" className="relative flex-1 overflow-hidden flex flex-col justify-end p-8">
           <div className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/company.png')", backgroundPosition: "center center" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div className="relative">
-            <span className="text-leaf-bright text-[10px] uppercase tracking-widest font-semibold mb-2 block">회사소개</span>
-            <h2 className="text-white text-xl font-bold mb-2 leading-tight">땅을 아끼고,<br />생명을 돌봅니다</h2>
-            <span className="text-white/65 text-sm">회사소개 →</span>
+            <span className="text-leaf-bright text-[10px] uppercase tracking-widest font-semibold mb-2 block">{t.mobileCompanyBadge}</span>
+            <h2 className="text-white text-xl font-bold mb-2 leading-tight">{t.mobileCompanyTitle1}<br />{t.mobileCompanyTitle2}</h2>
+            <span className="text-white/65 text-sm">{t.mobileCompanyCta}</span>
           </div>
         </Link>
         <div className="h-px bg-white/10" />
@@ -275,9 +272,9 @@ export default function Hero() {
             style={{ backgroundImage: "url('/images/hero-agri.jpg')", backgroundPosition: "center 45%" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div className="relative">
-            <span className="text-leaf-bright text-[10px] uppercase tracking-widest font-semibold mb-2 block">농업 · 작물</span>
-            <h2 className="text-white text-xl font-bold mb-2 leading-tight">작물과 농지를 위한<br />YMK 유기질 비료</h2>
-            <span className="text-white/65 text-sm">제품 보기 →</span>
+            <span className="text-leaf-bright text-[10px] uppercase tracking-widest font-semibold mb-2 block">{t.mobileAgriBadge}</span>
+            <h2 className="text-white text-xl font-bold mb-2 leading-tight">{t.mobileAgriTitle1}<br />{t.mobileAgriTitle2}</h2>
+            <span className="text-white/65 text-sm">{t.mobileAgriCta}</span>
           </div>
         </Link>
         <div className="h-px bg-white/10" />
@@ -286,14 +283,14 @@ export default function Hero() {
             style={{ backgroundImage: "url('/images/hero-golf.jpg')", backgroundPosition: "center 35%" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div className="relative">
-            <span className="text-leaf text-[10px] uppercase tracking-widest font-semibold mb-2 block">골프장 · 조경</span>
-            <h2 className="text-white text-xl font-bold mb-2 leading-tight">코스 품질을 높이는<br />YMK 프리미엄 비료</h2>
-            <span className="text-white/65 text-sm">골프장 솔루션 →</span>
+            <span className="text-leaf text-[10px] uppercase tracking-widest font-semibold mb-2 block">{t.mobileGolfBadge}</span>
+            <h2 className="text-white text-xl font-bold mb-2 leading-tight">{t.mobileGolfTitle1}<br />{t.mobileGolfTitle2}</h2>
+            <span className="text-white/65 text-sm">{t.mobileGolfCta}</span>
           </div>
         </Link>
       </div>
 
-      {/* ── 스크롤 다운 힌트 ── */}
+      {/* Scroll hint */}
       <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none">
         <div className="w-px h-7 bg-gradient-to-b from-white/30 to-transparent" />
         <span className="text-white/25 text-[9px] uppercase tracking-[0.3em]">Scroll</span>

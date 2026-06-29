@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 type FormState = {
   company: string;
@@ -13,6 +16,9 @@ type FormState = {
 };
 
 export default function ContactInner() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.contact : en.contact;
+
   const [form, setForm] = useState<FormState>({
     company: "",
     name: "",
@@ -51,10 +57,8 @@ export default function ContactInner() {
     };
 
     try {
-      // Google Apps Script 웹앱 URL — 배포 후 아래에 입력
       const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx2_PasF3dk0mTfMs3yknWi6I0bdCQ27xGxGb2cqa1Jy7aeL1cFNOxHSzoIA6lEu2ox/exec";
 
-      // Google Apps Script는 no-cors 모드로 전송 (CORS 제한 우회)
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
@@ -70,7 +74,7 @@ export default function ContactInner() {
       });
       setSubmitted(true);
     } catch {
-      setError("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      setError(t.errorMsg);
     } finally {
       setSending(false);
     }
@@ -92,9 +96,9 @@ export default function ContactInner() {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-forest mb-2">접수되었습니다</h3>
+        <h3 className="text-xl font-bold text-forest mb-2">{t.successTitle}</h3>
         <p className="text-forest/60 text-sm">
-          영업일 기준 1~2일 내 연락드리겠습니다.
+          {t.successDesc}
         </p>
       </div>
     );
@@ -105,26 +109,26 @@ export default function ContactInner() {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-forest mb-1.5">
-            회사명·기관명
+            {t.companyName}
           </label>
           <input
             type="text"
             value={form.company}
             onChange={set("company")}
-            placeholder="주식회사 예시"
+            placeholder={t.companyPlaceholder}
             className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm placeholder-forest/30 focus:outline-none focus:border-leaf"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-forest mb-1.5">
-            담당자명 <span className="text-clay">*</span>
+            {t.contactPerson} <span className="text-clay">*</span>
           </label>
           <input
             type="text"
             value={form.name}
             onChange={set("name")}
             required
-            placeholder="홍길동"
+            placeholder={t.namePlaceholder}
             className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm placeholder-forest/30 focus:outline-none focus:border-leaf"
           />
         </div>
@@ -133,26 +137,26 @@ export default function ContactInner() {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-forest mb-1.5">
-            연락처 <span className="text-clay">*</span>
+            {t.phone} <span className="text-clay">*</span>
           </label>
           <input
             type="tel"
             value={form.phone}
             onChange={set("phone")}
             required
-            placeholder="010-0000-0000"
+            placeholder={t.phonePlaceholder}
             className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm placeholder-forest/30 focus:outline-none focus:border-leaf"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-forest mb-1.5">
-            이메일
+            {t.email}
           </label>
           <input
             type="email"
             value={form.email}
             onChange={set("email")}
-            placeholder="example@company.com"
+            placeholder={t.emailPlaceholder}
             className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm placeholder-forest/30 focus:outline-none focus:border-leaf"
           />
         </div>
@@ -160,37 +164,37 @@ export default function ContactInner() {
 
       <div>
         <label className="block text-sm font-medium text-forest mb-1.5">
-          문의 유형
+          {t.inquiryType}
         </label>
         <select
           value={form.type}
           onChange={set("type")}
           className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm focus:outline-none focus:border-leaf"
         >
-          <option value="">선택해 주세요</option>
-          <option value="bulk">대량 구매</option>
-          <option value="golf">골프장 도입</option>
-          <option value="oem">OEM·ODM</option>
-          <option value="export">수출 파트너십</option>
-          <option value="home">홈가드닝 소량 구매</option>
-          <option value="other">기타</option>
+          <option value="">{t.selectPlaceholder}</option>
+          <option value="bulk">{t.typeBulk}</option>
+          <option value="golf">{t.typeGolf}</option>
+          <option value="oem">{t.typeOem}</option>
+          <option value="export">{t.typeExport}</option>
+          <option value="home">{t.typeHome}</option>
+          <option value="other">{t.typeOther}</option>
         </select>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-forest mb-1.5">
-          문의 내용
+          {t.message}
         </label>
         <textarea
           value={form.message}
           onChange={set("message")}
           rows={4}
-          placeholder="구체적인 수량, 일정, 요청 사항 등을 적어 주세요."
+          placeholder={t.messagePlaceholder}
           className="w-full px-4 py-2.5 rounded-xl border border-sage/30 bg-white text-forest text-sm placeholder-forest/30 focus:outline-none focus:border-leaf resize-none"
         />
       </div>
 
-      {/* 개인정보 동의 — 필수 */}
+      {/* Privacy consent */}
       <div className="p-4 rounded-xl bg-sage/10 border border-sage/20">
         <label className="flex gap-3 cursor-pointer">
           <input
@@ -201,10 +205,7 @@ export default function ContactInner() {
             className="mt-0.5 w-4 h-4 accent-leaf flex-shrink-0"
           />
           <span className="text-xs text-forest/70 leading-relaxed">
-            <strong className="text-forest">[필수]</strong> 개인정보 수집·이용에
-            동의합니다. 수집 항목: 성명, 연락처, 이메일. 이용 목적: 상담 답변 및
-            견적 제공. 보유 기간: 상담 완료 후 1년. 동의를 거부할 권리가 있으나,
-            거부 시 상담 서비스가 제한됩니다.
+            <strong className="text-forest">{t.consentRequired}</strong> {t.consentText}
           </span>
         </label>
       </div>
@@ -217,7 +218,7 @@ export default function ContactInner() {
         disabled={!form.consent || sending}
         className="w-full py-3.5 rounded-xl bg-forest text-paper font-semibold hover:bg-leaf transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        {sending ? "전송 중..." : "상담 신청하기"}
+        {sending ? t.sending : t.submit}
       </button>
     </form>
   );

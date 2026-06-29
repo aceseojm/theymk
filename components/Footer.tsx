@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { company } from "@/lib/data";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 export default function Footer() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.footer : en.footer;
+
   return (
     <footer className="bg-forest border-t border-white/10 py-10">
       <div className="max-w-6xl mx-auto px-6">
@@ -10,7 +18,7 @@ export default function Footer() {
             <div className="relative w-12 h-12 flex-shrink-0 mt-0.5">
               <Image
                 src="/images/ymk-logo1.png"
-                alt="YMK 로고"
+                alt="YMK Logo"
                 fill
                 className="object-contain"
               />
@@ -21,7 +29,7 @@ export default function Footer() {
               <p className="text-sage text-xs leading-relaxed">
                 {company.name}
                 <br />
-                사업자등록번호 {company.bizNumber}
+                {t.bizNumber} {company.bizNumber}
                 <br />
                 {company.address}
                 <br />
@@ -30,7 +38,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="text-sage text-xs text-left md:text-right self-end md:self-auto">
-            <p>© {new Date().getFullYear()} 주식회사 와이엠케이. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {t.copyright}</p>
           </div>
         </div>
       </div>

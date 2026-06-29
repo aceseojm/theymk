@@ -1,23 +1,29 @@
+"use client";
+
 import { company } from "@/lib/data";
 import ContactInner from "@/components/ContactInner";
+import { useLang } from "@/context/LangContext";
+import { ko } from "@/lib/i18n/ko";
+import { en } from "@/lib/i18n/en";
 
 export default function Contact() {
+  const { lang } = useLang();
+  const t = lang === "ko" ? ko.contactSection : en.contactSection;
+
   return (
     <section id="contact" className="bg-paper py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
-          {/* 왼쪽 — 안내 */}
+          {/* Left — info */}
           <div>
             <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-3">
-              상담 신청
+              {t.label}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-forest mb-6">
-              파트너십 또는 구매 상담
+              {t.title}
             </h2>
             <p className="text-forest/70 leading-relaxed mb-8">
-              대량 구매, OEM·ODM, 수출 파트너십, 골프장 도입 등 어떤 상담이든
-              환영합니다. 양식을 작성해 주시면 영업일 기준 1~2일 내
-              연락드립니다.
+              {t.subtitle}
             </p>
 
             <div className="space-y-4 text-sm">
@@ -38,7 +44,7 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-forest">{company.name}</p>
                   <p className="text-forest/60">
-                    대표 {company.ceo} · 사업자 {company.bizNumber}
+                    {t.ceoLabel} {company.ceo} · {t.bizLabel} {company.bizNumber}
                   </p>
                 </div>
               </div>
@@ -66,7 +72,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* 오른쪽 — 폼 */}
+          {/* Right — form */}
           <div>
             <ContactInner />
           </div>
