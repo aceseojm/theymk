@@ -74,7 +74,7 @@ export default function Products() {
                 {product.spec && (
                   <div className="my-5 p-4 bg-paper rounded-xl">
                     <p className="text-forest/50 text-xs uppercase tracking-wide mb-1">{t.specLabel}</p>
-                    <p className="text-forest font-semibold">{product.spec}</p>
+                    <p className="text-forest font-semibold">{lang === "ko" ? product.spec : (product as any).specEn}</p>
                   </div>
                 )}
 
@@ -94,20 +94,20 @@ export default function Products() {
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div>
                         <span className="text-forest/40 text-xs">{t.certNumber}</span>
-                        <p className="text-forest font-medium">{product.certNumber}</p>
+                        <p className="text-forest font-medium">{lang === "ko" ? product.certNumber : (product as any).certNumberEn}</p>
                       </div>
                       <div>
                         <span className="text-forest/40 text-xs">{t.certBody}</span>
-                        <p className="text-forest font-medium">{product.certBody}</p>
+                        <p className="text-forest font-medium whitespace-pre-line">{lang === "ko" ? product.certBody : (product as any).certBodyEn}</p>
                       </div>
                       <div className="col-span-2">
                         <span className="text-forest/40 text-xs">{t.certPeriod}</span>
-                        <p className="text-forest font-medium">{product.certPeriod}</p>
+                        <p className="text-forest font-medium">{lang === "ko" ? product.certPeriod : (product as any).certPeriodEn}</p>
                       </div>
                       {product.designReg && product.designReg !== "—" && (
                         <div className="col-span-2">
                           <span className="text-forest/40 text-xs">{t.designReg}</span>
-                          <p className="text-forest font-medium">{product.designReg}</p>
+                          <p className="text-forest font-medium">{lang === "ko" ? product.designReg : (product as any).designRegEn}</p>
                         </div>
                       )}
                     </div>

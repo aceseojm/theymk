@@ -100,8 +100,8 @@ export default function ProductDetailClient({ id }: Props) {
               {/* Cert number (HUMAS only) */}
               {isHumus && (
                 <p className="text-xs text-forest/35 mb-6 leading-relaxed">
-                  {lang === "ko" ? "유기농업자재 공시" : "Organic Materials Cert."} {product.certNumber} · {lang === "ko" ? "공시기관" : "Issuer"}: {product.certBody}<br />
-                  {lang === "ko" ? "유효기간" : "Valid"}: {product.certPeriod}
+                  {lang === "ko" ? "유기농업자재 공시" : "Organic Materials Cert."} {lang === "ko" ? product.certNumber : (product as any).certNumberEn} · {lang === "ko" ? "공시기관" : "Issuer"}: {lang === "ko" ? product.certBody : (product as any).certBodyEn?.replace(/\n/g, " · ")}<br />
+                  {lang === "ko" ? "유효기간" : "Valid"}: {lang === "ko" ? product.certPeriod : (product as any).certPeriodEn}
                 </p>
               )}
 

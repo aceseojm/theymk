@@ -101,7 +101,7 @@ export default function ProductsPage() {
                           {t.nitrogenLabel}
                         </p>
                         <p className="text-2xl font-bold text-leaf">7.1%</p>
-                        <p className="text-xs mt-0.5 text-forest/35">{product.certNumber}</p>
+                        <p className="text-xs mt-0.5 text-forest/35">{lang === "ko" ? product.certNumber : (product as any).certNumberEn}</p>
                       </div>
                     )}
 

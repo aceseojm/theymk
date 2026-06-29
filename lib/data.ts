@@ -29,10 +29,15 @@ export const products = [
     description:
       "공시 기준 질소전량 7.1%의 고질소 유기질 비료. OMRI(유기농업자재 인증기관) 원료를 국내에 독점 공급받아 제조합니다. 효능·효과 미표시제품으로, 성분과 원료 사실 그대로 공개합니다.",
     spec: "질소전량 7.1% (공시 기준 확정)",
+    specEn: "Total Nitrogen 7.1% (certified standard)",
     certNumber: "제 공시-2-3-974호",
+    certNumberEn: "No. 공시-2-3-974",
     certBody: "강원대학교 산학협력단 친환경농산물안전성센터",
+    certBodyEn: "Kangwon National University\nIndustry-Academic Cooperation Foundation\nEco-Friendly Agricultural Product Safety Center",
     certPeriod: "2026.02.26 ~ 2029.02.25",
+    certPeriodEn: "2026.02.26 ~ 2029.02.25",
     designReg: "제 30-1350642호",
+    designRegEn: "No. 30-1350642",
     origin: "중국 G-Teck Bioscience (Xian)",
     ingredients,
     // 상세 페이지용
@@ -75,10 +80,15 @@ export const products = [
     description:
       "미국 유기농 인증 원료를 사용한 4종 복합 액체 영양제. 식물성 아미노산·휴믹산·알긴산·해조추출물을 복합 배합해 토양과 작물에 직접 작용합니다.",
     spec: "아미노산 고함량 배합 (B2B 파트너 제공)",
+    specEn: "High amino acid blend (provided to B2B partners)",
     certNumber: "공시번호 기재 예정",
+    certNumberEn: "To be registered",
     certBody: "유기농업자재 공시 취득",
+    certBodyEn: "Organic Agricultural Material Certification (pending)",
     certPeriod: "공시 갱신 예정",
+    certPeriodEn: "To be renewed",
     designReg: "디자인등록 취득",
+    designRegEn: "Design Registration obtained",
     origin: "미국 유기농 인증 원료",
     ingredients: [],
     features: [
