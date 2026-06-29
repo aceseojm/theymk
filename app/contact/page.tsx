@@ -46,13 +46,13 @@ export default function ContactPage() {
                 <p className="text-xs text-forest/40 uppercase tracking-widest font-medium mb-3">
                   {t.companyInfoLabel}
                 </p>
-                <p className="font-bold text-forest">{company.name}</p>
+                <p className="font-bold text-forest">{lang === "ko" ? company.name : company.nameEn}</p>
                 <p className="text-forest/60 text-sm mt-1 leading-relaxed">
-                  {lang === "ko" ? "대표이사" : "CEO"} {company.ceo}
+                  {lang === "ko" ? "대표이사 강길원" : "CEO Kil Won, Kang"}
                   <br />
                   {lang === "ko" ? "사업자" : "Biz. Reg."} {company.bizNumber}
                   <br />
-                  {company.address}
+                  {lang === "ko" ? company.address : company.addressEn}
                 </p>
               </div>
 
