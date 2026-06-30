@@ -404,7 +404,7 @@ export const ko = {
     breadcrumb: "제품",
     breadcrumbSub: "원료 소개",
     label: "03 · 원료 소개",
-    title: "미국 협회 인증 원료,",
+    title: "미국 유기농 인증 협회 인증 원료,",
     titleHighlight: "7종",
     subtitle: "YMK 제품에 사용되는 모든 원료는 OMRI(Organic Materials Review Institute) 기준을 충족합니다. 아래 인증서가 그 근거입니다.",
     certBadges: [
