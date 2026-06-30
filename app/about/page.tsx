@@ -23,13 +23,13 @@ const historyEn = [
 ];
 
 const visionItemsKo = [
-  { icon: "🌱", title: "자연과의 공존", desc: "화학비료가 아닌 유기질 원료를 사용해 토양 생태계를 보전하고 다음 세대도 건강한 땅을 물려받을 수 있도록 합니다." },
+  { icon: "🌱", title: "천연 친환경 원료", desc: "화학비료가 아닌 유기질 원료를 사용해 토양 생태계를 보전하고 다음 세대도 건강한 땅을 물려받을 수 있도록 합니다." },
   { icon: "🤝", title: "농가와의 신뢰", desc: "원료 배합 전체 공개, 유기농업자재 공시 취득, 로트별 분석성적서 제공으로 투명성을 지킵니다." },
   { icon: "🌏", title: "미래 세대를 위한 약속", desc: "지속 가능한 방식으로 수확량과 품질을 높여 농업의 경제적 미래를 함께 만들어 갑니다." },
 ];
 
 const visionItemsEn = [
-  { icon: "🌱", title: "Coexistence with Nature", desc: "Using organic ingredients rather than chemical fertilizers to preserve soil ecosystems and ensure future generations inherit healthy land." },
+  { icon: "🌱", title: "Natural Eco-Friendly Ingredients", desc: "Using organic ingredients rather than chemical fertilizers to preserve soil ecosystems and ensure future generations inherit healthy land." },
   { icon: "🤝", title: "Trust with Farmers", desc: "We maintain transparency through full ingredient disclosure, organic materials certification, and lot-by-lot analysis reports." },
   { icon: "🌏", title: "A Promise for Future Generations", desc: "We work together to build the economic future of agriculture by sustainably improving yields and quality." },
 ];
