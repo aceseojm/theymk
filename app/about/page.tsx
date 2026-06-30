@@ -192,7 +192,8 @@ export default function AboutPage() {
             src="/images/engineering-bg.jpg"
             alt=""
             fill
-            className="object-cover object-right opacity-30"
+            className="object-cover opacity-30"
+            style={{ objectPosition: "right top" }}
             sizes="100vw"
           />
         </div>
