@@ -457,7 +457,7 @@ export const trustItems = [
   },
   {
     badge: "OMRI 원료",
-    title: "OMRI 원료 기준",
+    title: "OMRI 원료 인증",
     number: "원료 기준 적용",
     issuer: "Organic Materials Review Institute",
     period: "G-Teck Bioscience (Xian) 공급",
