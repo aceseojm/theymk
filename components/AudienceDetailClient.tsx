@@ -110,7 +110,7 @@ const enAudienceData: Record<string, {
 
 const heroImages: Record<string, string> = {
   "agri-b2b": "/images/audience-agri.jpg",
-  export: "/images/export.png",
+  export: "/images/export-hero.jpg",
   oem: "/images/oem-hero.jpg",
   home: "/images/homegarden.png",
   golf: "/images/golf-course-v2.png",

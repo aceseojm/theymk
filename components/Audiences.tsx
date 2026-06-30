@@ -19,7 +19,7 @@ const cardImages: Record<string, string> = {
   "agri-b2b": "/images/audience-agri.jpg",
   golf: "/images/golf-hero.jpg",
   oem: "/images/oem-hero.jpg",
-  export: "/images/export.png",
+  export: "/images/export-hero.jpg",
   home: "/images/homegarden.png",
 };
 
