@@ -62,8 +62,16 @@ export default function AudiencesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-forest pt-32 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="relative bg-forest pt-32 pb-20 overflow-hidden">
+        <Image
+          src="/images/oem-hero.jpg"
+          alt="YMK OEM/ODM Fertilizer Solutions"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">{t.label}</p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-6 max-w-2xl">
             {t.title}{" "}
