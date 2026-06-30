@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero";
 import WhySection from "@/components/WhySection";
-import CompositionSignature from "@/components/CompositionSignature";
 import Products from "@/components/Products";
 import CropShowcase from "@/components/CropShowcase";
 import Audiences from "@/components/Audiences";
@@ -12,7 +11,6 @@ export default function Home() {
     <>
       <Hero />
       <WhySection />
-      <CompositionSignature />
       <Products />
       <CropShowcase />
       <Audiences />
