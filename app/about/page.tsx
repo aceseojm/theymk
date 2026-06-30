@@ -186,8 +186,17 @@ export default function AboutPage() {
       </section>
 
       {/* Engineering */}
-      <section id="engineering" className="bg-white py-20 scroll-mt-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="engineering" className="relative bg-white py-20 scroll-mt-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/engineering-bg.jpg"
+            alt=""
+            fill
+            className="object-cover object-right opacity-30"
+            sizes="100vw"
+          />
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-leaf text-xs uppercase tracking-widest font-medium mb-3">{t.engineeringLabel}</p>
