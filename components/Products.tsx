@@ -57,14 +57,14 @@ export default function Products() {
                           : "bg-clay/10 text-clay"
                       }`}
                     >
-                      {lang === "ko" ? product.badge : (product.id === "humus-premium" ? "Flagship Product" : "Liquid Complex Nutrient")}
+                      {lang === "ko" ? product.badge : (product.id === "humus-premium" ? "Flagship Product" : "Type 4 Complex Fertilizer (Liquid)")}
                     </span>
                     <h3 className="text-2xl font-bold text-forest">
                       {lang === "ko" ? product.name : product.nameEn}
                     </h3>
                     <p className="text-forest/60 text-sm mt-1">
                       {lang === "ko" ? product.tagline : (product.id === "humus-premium"
-                        ? "OMRI-certified ingredient-based pellet organic fertilizer. Total nitrogen 7.1% by official standard. Full ingredient disclosure."
+                        ? "OMRI-certified ingredient-based granule-type organic fertilizer. Total nitrogen 7.1% by official standard. Full ingredient disclosure."
                         : "4-component liquid nutrient with US organic certified ingredients. Suitable for foliar and soil application.")}
                     </p>
                   </div>
@@ -82,7 +82,7 @@ export default function Products() {
                 <p className="text-forest/70 text-sm leading-relaxed mb-6">
                   {lang === "ko" ? product.description : (product.id === "humus-premium"
                     ? "High-nitrogen organic fertilizer with 7.1% total nitrogen (certified standard). Manufactured using OMRI-certified ingredients sourced exclusively in Korea. Efficacy not specified on label — only ingredient and material facts are disclosed."
-                    : "4-component liquid nutrient using US organic-certified ingredients. Combines plant-based amino acids, humic acid, alginic acid, and seaweed extract to act directly on soil and crops.")}
+                    : "4-component liquid fertilizer using US organic-certified ingredients. Combines plant-based amino acids, humic acid, and more to act directly on soil and crops.")}
                 </p>
 
                 {/* Certification info */}

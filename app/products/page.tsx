@@ -67,7 +67,7 @@ export default function ProductsPage() {
                   <div className={`h-1 ${isHumus ? "bg-leaf" : "bg-yellow-400"}`} />
                   <div className="p-8">
                     <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold mb-4 ${isHumus ? "bg-leaf/10 text-leaf" : "bg-yellow-400/15 text-yellow-600"}`}>
-                      {lang === "ko" ? product.badge : (isHumus ? "Flagship Product" : "Liquid Complex Nutrient")}
+                      {lang === "ko" ? product.badge : (isHumus ? "Flagship Product" : "Type 4 Complex Fertilizer (Liquid)")}
                     </span>
 
                     <h2 className="text-2xl font-bold mb-1 text-forest">
@@ -78,8 +78,8 @@ export default function ProductsPage() {
                     </p>
                     <p className="text-sm italic leading-relaxed mb-6 text-forest/55">
                       &ldquo;{lang === "ko" ? product.tagline : (isHumus
-                        ? "OMRI-certified ingredient-based pellet organic fertilizer. Total nitrogen 7.1% by official standard. Full ingredient disclosure."
-                        : "4-component liquid nutrient with US organic certified ingredients. Suitable for foliar and soil application.")}&rdquo;
+                        ? "OMRI-certified ingredient-based granule-type organic fertilizer. Total nitrogen 7.1% by official standard. Full ingredient disclosure."
+                        : "4-component liquid fertilizer with US organic certified ingredients. Suitable for foliar and soil application.")}&rdquo;
                     </p>
 
                     {/* Feature list */}
