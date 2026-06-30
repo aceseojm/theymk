@@ -46,7 +46,7 @@ const partnersKo = [
   {
     country: "중국",
     name: "G-Teck Bioscience (Xian)",
-    title: "OMRI 인증 특수 기능성 원료 공급사",
+    title: "유기질 비료 및 액상 비료를 제조합니다.",
     desc: "OMRI(Organic Materials Review Institute) 기준을 충족하는 특수 기능성 원료를 국내에 독점 공급합니다.",
     tags: ["OMRI 인증 원료", "국내 독점 공급", "기술 협력"],
     accent: "text-clay",
@@ -65,7 +65,7 @@ const partnersEn = [
   {
     country: "China",
     name: "G-Teck Bioscience (Xian)",
-    title: "OMRI-Certified Specialty Functional Ingredient Supplier",
+    title: "Manufactures organic and liquid fertilizers.",
     desc: "Exclusively supplies specialty functional ingredients meeting OMRI (Organic Materials Review Institute) standards to the domestic market.",
     tags: ["OMRI-Certified Ingredients", "Exclusive Domestic Supply", "Technology Cooperation"],
     accent: "text-clay",
