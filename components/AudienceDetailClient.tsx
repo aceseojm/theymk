@@ -170,7 +170,7 @@ export default function AudienceDetailClient({ id }: Props) {
           <div className="absolute inset-0">
             <Image src={heroImg} alt={displayTitle} fill className="object-cover object-center" priority />
             {seg.id === "smartfarm" && (
-              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/55 to-transparent" />
             )}
             {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && seg.id !== "smartfarm" && (
               <div className={`absolute inset-0 ${

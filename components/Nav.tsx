@@ -381,6 +381,7 @@ const enAudienceTitles: Record<string, string> = {
   golf: "Golf Course",
   oem: "OEM·ODM",
   export: "Export",
+  smartfarm: "Smart Farm · Hydroponics",
   home: "Home Gardening",
 };
 
@@ -389,5 +390,6 @@ const enAudienceSubtitles: Record<string, string> = {
   golf: "Green · Fairway Management",
   oem: "Custom Branding",
   export: "Southeast Asia · Overseas",
+  smartfarm: "Precision Nutrient System",
   home: "Small Quantity Purchase",
 };
