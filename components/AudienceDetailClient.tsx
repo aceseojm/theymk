@@ -168,7 +168,7 @@ export default function AudienceDetailClient({ id }: Props) {
       } ${isLeaf ? "bg-leaf" : isDark ? "bg-forest" : seg.id === "oem" ? "bg-white" : "bg-paper"}`}>
         {heroImg && (
           <div className="absolute inset-0">
-            <Image src={heroImg} alt={displayTitle} fill className="object-cover object-center" priority />
+            <Image src={heroImg} alt={displayTitle} fill className={seg.id === "export" ? "object-contain" : "object-cover object-center"} priority />
             {seg.id === "smartfarm" && (
               <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/55 to-transparent" />
             )}
