@@ -49,7 +49,7 @@ html {
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 60s linear infinite;
 }
 
 /* 히어로 그라데이션 — 연두·흰색 사이를 천천히 이동 */
