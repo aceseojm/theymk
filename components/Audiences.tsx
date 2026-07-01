@@ -21,7 +21,7 @@ const cardImages: Record<string, string> = {
   golf: "/images/golf-hero.jpg",
   oem: "/images/oem-hero-v2.jpg",
   export: "/images/export-hero.jpg",
-  smartfarm: "/images/homegarden.png",
+  smartfarm: "/images/smartfarm.jpg",
   home: "/images/homegarden.png",
 };
 

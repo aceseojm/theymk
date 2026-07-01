@@ -130,7 +130,7 @@ const heroImages: Record<string, string> = {
   "agri-b2b": "/images/audience-agri.jpg",
   export: "/images/export-hero.jpg",
   oem: "/images/oem-hero-v2.jpg",
-  smartfarm: "/images/homegarden.png",
+  smartfarm: "/images/smartfarm.jpg",
   home: "/images/homegarden.png",
   golf: "/images/golf-course-v2.png",
 };
@@ -149,7 +149,7 @@ export default function AudienceDetailClient({ id }: Props) {
   const prev = audiences[currentIdx - 1];
   const next = audiences[currentIdx + 1];
 
-  const isDark = seg.id === "golf" || seg.id === "export" || seg.id === "home";
+  const isDark = seg.id === "golf" || seg.id === "export" || seg.id === "home" || seg.id === "smartfarm";
   const isLeaf = seg.id === "agri-b2b";
   const heroImg = heroImages[seg.id] ?? null;
 
@@ -169,7 +169,7 @@ export default function AudienceDetailClient({ id }: Props) {
         {heroImg && (
           <div className="absolute inset-0">
             <Image src={heroImg} alt={displayTitle} fill className="object-cover object-center" priority />
-            {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && (
+            {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && seg.id !== "smartfarm" && (
               <div className={`absolute inset-0 ${
                 seg.id === "oem"
                   ? "bg-gradient-to-r from-white/80 via-white/35 to-transparent"
