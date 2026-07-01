@@ -61,14 +61,31 @@ export default function AudiencesPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-forest pt-32 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">{t.label}</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-6 max-w-2xl">
+      {/* Hero image rolling */}
+      <section className="relative overflow-hidden mt-[72px]" style={{ height: "40vw", maxHeight: "560px", minHeight: "280px" }}>
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="animate-marquee flex h-full" style={{ width: "200%" }}>
+            <div className="relative flex-shrink-0 h-full" style={{ width: "50%" }}>
+              <Image src="/images/audiences-collage.jpg" alt="" fill className="object-cover object-top" sizes="100vw" />
+            </div>
+            <div className="relative flex-shrink-0 h-full" style={{ width: "50%" }}>
+              <Image src="/images/audiences-collage.jpg" alt="" fill className="object-cover object-top" sizes="100vw" />
+            </div>
+          </div>
+        </div>
+        {/* Title overlay left-aligned */}
+        <div className="absolute inset-0 flex flex-col justify-center max-w-6xl mx-auto px-6 left-0 right-0 w-full">
+          <p className="text-white/80 text-sm font-medium uppercase tracking-widest mb-3 drop-shadow-lg">{t.label}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-lg max-w-2xl">
             {t.title}{" "}
             <span className="text-leaf-bright">{t.titleHighlight}</span>
           </h1>
+        </div>
+      </section>
+
+      {/* Subtitle below image */}
+      <section className="bg-forest py-8">
+        <div className="max-w-6xl mx-auto px-6">
           <p className="text-sage text-lg max-w-xl leading-relaxed">{t.subtitle}</p>
         </div>
       </section>
