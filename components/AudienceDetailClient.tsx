@@ -149,7 +149,7 @@ export default function AudienceDetailClient({ id }: Props) {
       }`}>
         {heroImg && (
           <div className="absolute inset-0">
-            <Image src={heroImg} alt={displayTitle} fill className="object-cover object-center" priority />
+            <Image src={heroImg} alt={displayTitle} fill className={`object-cover ${seg.id === "oem" ? "object-bottom" : "object-center"}`} priority />
             {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && (
               <div className={`absolute inset-0 ${
                 seg.id === "oem"
