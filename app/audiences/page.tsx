@@ -63,14 +63,15 @@ export default function AudiencesPage() {
     <>
       {/* Hero */}
       <section className="relative bg-forest pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/audiences-collage.jpg"
-            alt=""
-            fill
-            className="object-cover object-center opacity-35 mix-blend-screen"
-            sizes="100vw"
-          />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="animate-marquee flex h-full" style={{ width: "200%" }}>
+            <div className="relative flex-shrink-0 h-full" style={{ width: "50%" }}>
+              <Image src="/images/audiences-collage.jpg" alt="" fill className="object-cover object-center opacity-35 mix-blend-screen" sizes="100vw" />
+            </div>
+            <div className="relative flex-shrink-0 h-full" style={{ width: "50%" }}>
+              <Image src="/images/audiences-collage.jpg" alt="" fill className="object-cover object-center opacity-35 mix-blend-screen" sizes="100vw" />
+            </div>
+          </div>
         </div>
         <div className="relative max-w-6xl mx-auto px-6">
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">{t.label}</p>

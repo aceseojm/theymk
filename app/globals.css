@@ -43,6 +43,15 @@ html {
   outline-offset: 3px;
 }
 
+/* 활용분야 히어로 워터마크 롤링 */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-scroll 30s linear infinite;
+}
+
 /* 히어로 그라데이션 — 연두·흰색 사이를 천천히 이동 */
 @keyframes hero-gradient-shift {
   0%   { background-position: 0% 50%; }
