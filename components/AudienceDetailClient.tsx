@@ -149,7 +149,7 @@ export default function AudienceDetailClient({ id }: Props) {
   const prev = audiences[currentIdx - 1];
   const next = audiences[currentIdx + 1];
 
-  const isDark = seg.id === "golf" || seg.id === "export" || seg.id === "home" || seg.id === "smartfarm";
+  const isDark = seg.id === "golf" || seg.id === "export" || seg.id === "home" || seg.id === "smartfarm" || seg.id === "oem";
   const isLeaf = seg.id === "agri-b2b";
   const heroImg = heroImages[seg.id] ?? null;
 
@@ -163,21 +163,15 @@ export default function AudienceDetailClient({ id }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className={`relative overflow-hidden ${
-        seg.id === "oem" ? "aspect-video" : "h-[520px]"
-      } ${isLeaf ? "bg-leaf" : isDark ? "bg-forest" : seg.id === "oem" ? "bg-white" : "bg-paper"}`}>
+      <section className={`relative overflow-hidden h-[520px] ${isLeaf ? "bg-leaf" : isDark ? "bg-forest" : "bg-paper"}`}>
         {heroImg && (
           <div className="absolute inset-0">
             <Image src={heroImg} alt={displayTitle} fill className={seg.id === "export" ? "object-contain" : "object-cover object-center"} priority />
             {seg.id === "smartfarm" && (
               <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/55 to-transparent" />
             )}
-            {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && seg.id !== "smartfarm" && (
-              <div className={`absolute inset-0 ${
-                seg.id === "oem"
-                  ? "bg-gradient-to-r from-white/80 via-white/35 to-transparent"
-                  : "bg-forest/75"
-              }`} />
+            {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && seg.id !== "smartfarm" && seg.id !== "oem" && (
+              <div className="absolute inset-0 bg-forest/75" />
             )}
           </div>
         )}
