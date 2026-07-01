@@ -64,7 +64,7 @@ export default function AudiencesPage() {
   return (
     <>
       {/* Hero image rolling */}
-      <section className="relative overflow-hidden mt-[72px] h-[520px]">
+      <section className="relative overflow-hidden h-[400px]">
         <div className="absolute inset-0 overflow-hidden">
           <div className="animate-marquee flex h-full" style={{ width: "200%" }}>
             <div className="relative flex-shrink-0 h-full" style={{ width: "50%" }}>
