@@ -144,12 +144,12 @@ export default function AudienceDetailClient({ id }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className={`relative h-[520px] overflow-hidden ${
-        isLeaf ? "bg-leaf" : isDark ? "bg-forest" : seg.id === "oem" ? "bg-white" : "bg-paper"
-      }`}>
+      <section className={`relative overflow-hidden ${
+        seg.id === "oem" ? "aspect-video" : "h-[520px]"
+      } ${isLeaf ? "bg-leaf" : isDark ? "bg-forest" : seg.id === "oem" ? "bg-white" : "bg-paper"}`}>
         {heroImg && (
           <div className="absolute inset-0">
-            <Image src={heroImg} alt={displayTitle} fill className={`${seg.id === "oem" ? "object-contain object-center" : "object-cover object-center"}`} priority />
+            <Image src={heroImg} alt={displayTitle} fill className="object-cover object-center" priority />
             {seg.id !== "home" && seg.id !== "export" && seg.id !== "agri-b2b" && (
               <div className={`absolute inset-0 ${
                 seg.id === "oem"
