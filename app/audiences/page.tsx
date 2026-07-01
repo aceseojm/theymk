@@ -68,7 +68,7 @@ export default function AudiencesPage() {
             src="/images/audiences-collage.jpg"
             alt=""
             fill
-            className="object-cover object-center brightness-0 invert opacity-50"
+            className="object-cover object-center opacity-35 mix-blend-screen"
             sizes="100vw"
           />
         </div>
