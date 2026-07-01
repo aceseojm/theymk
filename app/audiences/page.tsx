@@ -62,8 +62,17 @@ export default function AudiencesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-forest pt-32 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="relative bg-forest pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/audiences-collage.jpg"
+            alt=""
+            fill
+            className="object-cover object-center opacity-15"
+            sizes="100vw"
+          />
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6">
           <p className="text-leaf text-sm font-medium uppercase tracking-widest mb-4">{t.label}</p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-6 max-w-2xl">
             {t.title}{" "}
