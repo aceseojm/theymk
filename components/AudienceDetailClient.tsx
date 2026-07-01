@@ -88,6 +88,24 @@ const enAudienceData: Record<string, {
       { q: "Can you handle custom packaging for overseas markets?", a: "Yes. Packaging localization for export markets is possible. Please inquire for details." },
     ],
   },
+  smartfarm: {
+    title: "Smart Farm · Hydroponics",
+    subtitle: "Precision Nutrient System",
+    body: "The more precisely a smart farm is controlled by sensors and ICT automation, the more the purity and uniformity of nutrients absorbed by crops determines success. YMK supplies high-performance clean liquid nutrients optimized for smart greenhouses and hydroponic systems.",
+    cta: "Smart Farm Solution Inquiry",
+    benefits: [
+      "Zero nozzle clogging — fine impurities fully removed by precision filtration",
+      "Perfect solubility and uniform density — stable EC/pH monitoring support",
+      "OMRI-certified ingredient base — applicable to eco-friendly certified hydroponics",
+      "Ingredient transparency — 3rd-party analysis reports for precision fertilization planning",
+      "B2B bulk supply contracts available for smart greenhouses and plant factories",
+    ],
+    faq: [
+      { q: "Can AMINO GOLD be used directly in hydroponic systems?", a: "Yes. Its perfect solubility and odor-free design allows direct application to nutrient solution systems and drip lines." },
+      { q: "I'm concerned about nozzle clogging.", a: "Precision filtration removes fine impurities, minimizing spray nozzle clogging." },
+      { q: "Is custom blending available for plant factories?", a: "Yes. Custom blend consulting is available based on crop type and growth stage. Please inquire for details." },
+    ],
+  },
   home: {
     title: "Home Gardening",
     subtitle: "Small Quantity Purchase",
@@ -112,6 +130,7 @@ const heroImages: Record<string, string> = {
   "agri-b2b": "/images/audience-agri.jpg",
   export: "/images/export-hero.jpg",
   oem: "/images/oem-hero-v2.jpg",
+  smartfarm: "/images/homegarden.png",
   home: "/images/homegarden.png",
   golf: "/images/golf-course-v2.png",
 };

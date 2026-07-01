@@ -318,6 +318,7 @@ export const ko = {
       { icon: "⛳", label: "골프장 도입" },
       { icon: "🏭", label: "OEM · ODM 제작" },
       { icon: "✈️", label: "수출 파트너십" },
+      { icon: "🧪", label: "스마트팜 / 수경재배 도입 문의" },
       { icon: "🪴", label: "홈가드닝 소량 구매" },
     ],
   },

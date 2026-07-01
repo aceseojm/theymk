@@ -318,6 +318,7 @@ export const en = {
       { icon: "⛳", label: "Golf Course" },
       { icon: "🏭", label: "OEM · ODM" },
       { icon: "✈️", label: "Export Partnership" },
+      { icon: "🧪", label: "Smart Farm / Hydroponics Inquiry" },
       { icon: "🪴", label: "Home Gardening (Small Qty)" },
     ],
   },

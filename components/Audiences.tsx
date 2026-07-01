@@ -12,6 +12,7 @@ const enAudiences = [
   { id: "golf", icon: "⛳", title: "Golf Course", subtitle: "Green · Fairway Management", desc: "Optimized nutrition supply to improve turf density and color for sustainable course management.", cta: "Golf Course Solution Inquiry" },
   { id: "oem", icon: "🏭", title: "OEM·ODM", subtitle: "Custom Branding", desc: "Custom ingredient design and packaging to strengthen brand competitiveness with fertilizer OEM·ODM solutions.", cta: "OEM Proposal Request" },
   { id: "export", icon: "✈️", title: "Export", subtitle: "Global Supply", desc: "Strict quality management and stable production for fertilizers trusted in the global market.", cta: "Export Partner Inquiry" },
+  { id: "smartfarm", icon: "🧪", title: "Smart Farm · Hydroponics", subtitle: "Precision Nutrient System", desc: "High-performance clean liquid nutrients optimized for smart greenhouses and hydroponic systems.", cta: "Smart Farm Inquiry" },
   { id: "home", icon: "🪴", title: "Home Gardening", subtitle: "Small Quantity Purchase", desc: "Safe and effective fertilizer for home plant care, easy to use indoors.", cta: "Small Purchase Inquiry" },
 ];
 
@@ -20,6 +21,7 @@ const cardImages: Record<string, string> = {
   golf: "/images/golf-hero.jpg",
   oem: "/images/oem-hero-v2.jpg",
   export: "/images/export-hero.jpg",
+  smartfarm: "/images/homegarden.png",
   home: "/images/homegarden.png",
 };
 

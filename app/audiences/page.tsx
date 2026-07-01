@@ -44,6 +44,7 @@ const cardImage: Record<string, string | null> = {
   golf: "/images/golf-hero.jpg",
   oem: "/images/oem-hero-v2.jpg",
   export: "/images/export-hero.jpg",
+  smartfarm: "/images/homegarden.png",
   home: "/images/homegarden.png",
 };
 
@@ -52,6 +53,7 @@ const enAudienceMap: Record<string, { title: string; subtitle: string; desc: str
   golf: { title: "Golf Course", subtitle: "Green · Fairway Management", desc: "Uniform pellets optimized for mechanical spreading. No spreader blockages with 40 years of automation technology.", cta: "Golf Course Solution Inquiry" },
   oem: { title: "OEM·ODM", subtitle: "Custom Branding", desc: "Ingredient blend, packaging, and branding customization. Consultation available from small sample quantities.", cta: "OEM Proposal Request" },
   export: { title: "Export", subtitle: "Southeast Asia · Overseas Supply", desc: "OMRI-based products well-suited for entry into overseas organic certification markets.", cta: "Export Partner Inquiry" },
+  smartfarm: { title: "Smart Farm · Hydroponics", subtitle: "Precision Nutrient System", desc: "High-performance clean liquid nutrients optimized for smart greenhouses and hydroponic systems.", cta: "Smart Farm Inquiry" },
   home: { title: "Home Gardening", subtitle: "Small Quantity Purchase", desc: "For home gardens and balcony planters. Odor-free pellet type, usable indoors.", cta: "Small Purchase Inquiry" },
 };
 
