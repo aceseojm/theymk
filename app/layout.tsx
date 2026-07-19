@@ -5,6 +5,10 @@ import Footer from "@/components/Footer";
 import { LangProvider } from "@/context/LangContext";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   verification: {
     google: "jjaHryYzjw01yYYC3I-GXjLImb5FIPikyKluYMRSjvs",
   },
