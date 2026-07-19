@@ -13,20 +13,35 @@ export const metadata: Metadata = {
     google: "jjaHryYzjw01yYYC3I-GXjLImb5FIPikyKluYMRSjvs",
   },
   title: {
-    default: "YMK — 모든 생명을 위한 맞춤 비료",
-    template: "%s | YMK",
+    default: "YMK 유기질 비료 | 친환경 비료 전문 브랜드 — 와이엠케이",
+    template: "%s | YMK 와이엠케이",
   },
   description:
-    "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 주식회사 와이엠케이의 친환경 유기질 비료 솔루션.",
+    "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·텃밭·스마트팜을 위한 친환경 유기질 비료 전문 브랜드 와이엠케이. 무취 고형 비료·액체 비료 추천.",
+  keywords: [
+    "비료", "유기질비료", "친환경비료", "유기농비료", "천연비료",
+    "강길원", "와이엠케이", "YMK",
+    "비료종류", "비료성분", "비료사용법", "비료추천", "비료가격", "비료구매",
+    "비료효과", "비료주는시기",
+    "잔디비료", "텃밭비료", "화분비료", "과수비료", "채소비료",
+    "고추비료", "토마토비료", "다육이비료", "관엽식물비료",
+    "완효성비료", "속효성비료", "고형비료", "액체비료", "무취비료",
+    "질소비료", "인산비료", "칼륨비료", "NPK비료",
+    "밑거름", "웃거름", "미생물비료",
+    "가정용비료추천", "초보자비료", "가성비비료", "대용량비료",
+    "스마트팜비료", "수경재배비료", "골프장비료", "비료OEM",
+  ],
+  metadataBase: new URL("https://the-ymk.com"),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "YMK — 모든 생명을 위한 맞춤 비료",
+    title: "YMK 유기질 비료 | 친환경 비료 전문 브랜드 — 와이엠케이",
     description:
-      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 친환경 유기질 비료 솔루션.",
-    url: "https://theymk.vercel.app",
-    siteName: "YMK",
+      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·텃밭·스마트팜을 위한 친환경 유기질 비료 전문 브랜드.",
+    url: "https://the-ymk.com",
+    siteName: "YMK 와이엠케이",
     images: [
       {
-        url: "https://theymk.vercel.app/images/cover.png",
+        url: "https://the-ymk.com/images/cover.png",
         width: 1200,
         height: 630,
         alt: "YMK 유기질 비료 — 모든 생명을 위한 맞춤 비료",
@@ -37,10 +52,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "YMK — 모든 생명을 위한 맞춤 비료",
+    title: "YMK 유기질 비료 | 친환경 비료 전문 브랜드",
     description:
-      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·조경을 위한 친환경 유기질 비료 솔루션.",
-    images: ["https://theymk.vercel.app/images/cover.png"],
+      "OMRI 인증 원료 기반, 40년 펠릿 자동화 기술. 농업·골프장·텃밭을 위한 친환경 유기질 비료.",
+    images: ["https://the-ymk.com/images/cover.png"],
   },
 };
 
