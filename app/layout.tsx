@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -67,6 +68,18 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-C3LBTW7MV5"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-C3LBTW7MV5');
+          `}
+        </Script>
         <meta name="naver-site-verification" content="62cc643110e45c6962d28aff8bf42f36405dec4d" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link
