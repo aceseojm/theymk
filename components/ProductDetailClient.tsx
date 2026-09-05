@@ -199,9 +199,10 @@ export default function ProductDetailClient({ id }: Props) {
                     product.id === "amino-gold"
                       ? ["/images/app-fruitveg.jpg", "/images/app-vegetable.jpg", "/images/app-rice.jpg", "/images/app-golf.jpg"]
                       : null;
+                  const appBannerAspect = product.id === "alora-prime" ? "aspect-[9/1]" : "aspect-[16/7]";
                   return (
                     <div key={i} className="bg-white rounded-2xl overflow-hidden border border-sage/20">
-                      <div className="relative aspect-[16/7] overflow-hidden">
+                      <div className={`relative ${appBannerAspect} overflow-hidden`}>
                         {appImages ? (
                           <Image src={appImages[i] ?? appImages[0]} alt={app.title} fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
                         ) : (
