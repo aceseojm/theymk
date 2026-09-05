@@ -15,6 +15,16 @@ const metaMap: Record<string, { title: string; description: string; keywords: st
     description: "아미노산 기반 액체 속효성 비료. 엽면시비·토양관주 모두 가능. 무취로 실내·골프장 영업 중 사용 가능. 색상·광택 개선, 빠른 영양 흡수. 화분·텃밭·스마트팜에 적합.",
     keywords: ["아미노골드", "아미노산비료", "액체비료", "속효성비료", "엽면시비", "액비", "무취액체비료", "수경재배비료"],
   },
+  "georoot": {
+    title: "지오루트 GeoRoot | 뿌리 강화 전용 비료 — YMK",
+    description: "5-ALA·AOS·GABA로 강화한 뿌리 영역(근권) 전용 비료. 저분자량 탄소와 풀빅산으로 뿌리 발달과 토양 구조를 개선합니다. 야채류·근채류·과일나무 적용.",
+    keywords: ["지오루트", "GeoRoot", "뿌리영양제", "근권비료", "풀빅산비료", "5-ALA비료", "뿌리강화비료", "토양개량제"],
+  },
+  "alora-prime": {
+    title: "알로라 프라임 Alora Prime | 과육 품질 향상제 — YMK",
+    description: "5-ALA 기반 바이오 비료로 광합성 효율과 양분 할당을 개선. 색상·당도·저장성 향상. 엽채류·과수류·과채류·근채류·수도작 전 작물 적용 가능.",
+    keywords: ["알로라프라임", "AloraPrime", "5-ALA비료", "과육품질향상제", "바이오비료", "엽면시비", "당도증진비료", "착색비료"],
+  },
 };
 
 export async function generateStaticParams() {

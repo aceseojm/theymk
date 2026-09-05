@@ -17,8 +17,13 @@ export default function ProductDetailClient({ id }: Props) {
   const product = products.find((p) => p.id === id);
   if (!product) notFound();
 
-  const isHumus = product.id === "humus-premium";
-  const otherProduct = products.find((p) => p.id !== id)!;
+  const isGranule = product.type === "granule";
+  const otherProducts = products.filter((p) => p.id !== id);
+  const description = (lang === "ko" ? product.description : (product as any).descriptionEn) ?? product.description;
+  const fieldObjectFit = (product as any).fieldObjectFit ?? "object-cover";
+  const fieldAspect = (product as any).fieldAspect ?? "aspect-video";
+  const fieldBg = (product as any).fieldBg ?? "";
+  const isPackagePhoto = (product as any).cardImage === (product as any).detailImage;
 
   return (
     <>
@@ -35,12 +40,12 @@ export default function ProductDetailClient({ id }: Props) {
           <div className="grid md:grid-cols-[5fr_7fr] gap-10 md:gap-14 items-start">
             {/* Left: product image */}
             <div className="rounded-2xl overflow-hidden border border-sage/15 aspect-square sticky top-24 self-start">
-              <div className="relative w-full h-full">
+              <div className={`relative w-full h-full ${isPackagePhoto ? "p-[15%]" : ""}`}>
                 <Image
-                  src={isHumus ? "/images/humus-prmium-bg.png" : "/images/amino-gold-bottle.jpg"}
+                  src={(product as any).detailImage}
                   alt={lang === "ko" ? product.name : product.nameEn}
                   fill
-                  className="object-cover object-center"
+                  className={isPackagePhoto ? "object-contain object-center" : "object-cover object-center"}
                   priority
                   sizes="(max-width: 768px) 100vw, 500px"
                 />
@@ -52,27 +57,31 @@ export default function ProductDetailClient({ id }: Props) {
               {/* Badge tags */}
               <div className="flex flex-wrap gap-2 mb-5">
                 <span className="px-3 py-1 rounded-full text-xs font-medium bg-sage/15 text-forest/65 border border-sage/20">
-                  {isHumus ? t.granuleTag : t.liquidTag}
+                  {isGranule ? t.granuleTag : t.liquidTag}
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-sage/15 text-forest/65 border border-sage/20">
-                  {t.omriTag}
-                </span>
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-leaf/10 text-leaf border border-leaf/25">
-                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  {t.certifiedTag}
-                </span>
+                {(product as any).omriCertified && (
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-sage/15 text-forest/65 border border-sage/20">
+                    {t.omriTag}
+                  </span>
+                )}
+                {(product as any).hasCert && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-leaf/10 text-leaf border border-leaf/25">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {t.certifiedTag}
+                  </span>
+                )}
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold text-forest leading-tight mb-2">
                 {lang === "ko" ? product.name : product.nameEn}
               </h1>
-              <p className={`font-serif text-lg mb-5 ${isHumus ? "text-leaf" : "text-clay"}`}>
+              <p className={`font-serif text-lg mb-5 ${isGranule ? "text-leaf" : "text-clay"}`}>
                 {lang === "ko" ? product.nameEn : product.name}
               </p>
               <p className="text-forest/65 text-base leading-relaxed mb-7">
-                {product.description}
+                {description}
               </p>
 
               {/* Ingredient table */}
@@ -89,7 +98,7 @@ export default function ProductDetailClient({ id }: Props) {
                     {"ingredientsDisplay" in product && product.ingredientsDisplay.map((row: { name: string; amount: string; role: string }, i: number) => (
                       <tr key={row.name} className={`border-t border-sage/10 ${i % 2 === 0 ? "bg-white" : "bg-paper/60"}`}>
                         <td className="px-4 py-3 text-forest font-medium">{row.name}</td>
-                        <td className={`px-4 py-3 font-bold ${isHumus ? "text-leaf" : "text-clay"}`}>{row.amount}</td>
+                        <td className={`px-4 py-3 font-bold ${isGranule ? "text-leaf" : "text-clay"}`}>{row.amount}</td>
                         <td className="px-4 py-3 text-forest/60">{row.role}</td>
                       </tr>
                     ))}
@@ -97,11 +106,11 @@ export default function ProductDetailClient({ id }: Props) {
                 </table>
               </div>
 
-              {/* Cert number (HUMAS only) */}
-              {isHumus && (
+              {/* Cert number */}
+              {(product as any).hasCert && (
                 <p className="text-xs text-forest/35 mb-6 leading-relaxed">
-                  {lang === "ko" ? "유기농업자재 공시" : "Organic Materials Cert."} {lang === "ko" ? product.certNumber : (product as any).certNumberEn} · {lang === "ko" ? "공시기관" : "Issuer"}: {lang === "ko" ? product.certBody : (product as any).certBodyEn?.replace(/\n/g, " · ")}<br />
-                  {lang === "ko" ? "유효기간" : "Valid"}: {lang === "ko" ? product.certPeriod : (product as any).certPeriodEn}
+                  {lang === "ko" ? "유기농업자재 공시" : "Organic Materials Cert."} {lang === "ko" ? (product as any).certNumber : (product as any).certNumberEn} · {lang === "ko" ? "공시기관" : "Issuer"}: {lang === "ko" ? (product as any).certBody : (product as any).certBodyEn?.replace(/\n/g, " · ")}<br />
+                  {lang === "ko" ? "유효기간" : "Valid"}: {lang === "ko" ? (product as any).certPeriod : (product as any).certPeriodEn}
                 </p>
               )}
 
@@ -123,36 +132,36 @@ export default function ProductDetailClient({ id }: Props) {
       <section className="bg-white py-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="relative rounded-2xl overflow-hidden">
-            {isHumus ? (
-              <div className="relative aspect-video">
-                <Image src="/images/humus-premium-field.jpg" alt={lang === "ko" ? "휴머스 프리미엄 현장 이미지" : "HUMAS PREMIUM field application"} fill className="object-cover object-center" sizes="(max-width: 768px) 100vw, 1152px" />
-              </div>
-            ) : (
-              <div className="relative aspect-[3/2] bg-[#ede9df]">
-                <Image src="/images/amino-gold-product.jpg" alt={lang === "ko" ? "아미노 골드 현장 이미지" : "AMINO GOLD application"} fill className="object-contain" sizes="(max-width: 768px) 100vw, 1152px" />
-              </div>
-            )}
+            <div className={`relative ${fieldAspect} ${fieldBg}`}>
+              <Image
+                src={(product as any).fieldImage}
+                alt={lang === "ko" ? `${product.name} 현장 이미지` : `${product.nameEn} field application`}
+                fill
+                className={`${fieldObjectFit} object-center`}
+                sizes="(max-width: 768px) 100vw, 1152px"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className={`py-20 ${isHumus ? "bg-paper" : "bg-forest"}`}>
+      <section className={`py-20 ${isGranule ? "bg-paper" : "bg-forest"}`}>
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className={`text-2xl font-bold mb-10 ${isHumus ? "text-forest" : "text-paper"}`}>
+          <h2 className={`text-2xl font-bold mb-10 ${isGranule ? "text-forest" : "text-paper"}`}>
             {t.featuresTitle}
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {product.features.map((f, i) => (
               <div key={i} className={`flex gap-3 items-start p-5 rounded-xl ${
-                isHumus ? "bg-white border border-sage/20" : "bg-white/5 border border-white/10"
+                isGranule ? "bg-white border border-sage/20" : "bg-white/5 border border-white/10"
               }`}>
                 <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
-                  isHumus ? "bg-leaf/10 text-leaf" : "bg-leaf/30 text-leaf-bright"
+                  isGranule ? "bg-leaf/10 text-leaf" : "bg-leaf/30 text-leaf-bright"
                 }`}>
                   {i + 1}
                 </span>
-                <p className={`text-sm leading-relaxed ${isHumus ? "text-forest/70" : "text-sage"}`}>{f}</p>
+                <p className={`text-sm leading-relaxed ${isGranule ? "text-forest/70" : "text-sage"}`}>{f}</p>
               </div>
             ))}
           </div>
@@ -160,7 +169,7 @@ export default function ProductDetailClient({ id }: Props) {
       </section>
 
       {/* Functions / Applications */}
-      {isHumus ? (
+      {"functions" in product && product.functions ? (
         <section className="bg-forest py-20">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-2xl font-bold text-paper mb-10">{t.functionsTitle}</h2>
@@ -186,16 +195,18 @@ export default function ProductDetailClient({ id }: Props) {
             {"applications" in product && product.applications && (
               <div className="grid sm:grid-cols-2 gap-6">
                 {product.applications.map((app, i) => {
-                  const appImages = [
-                    "/images/app-fruitveg.jpg",
-                    "/images/app-vegetable.jpg",
-                    "/images/app-rice.jpg",
-                    "/images/app-golf.jpg",
-                  ];
+                  const appImages: string[] | null =
+                    product.id === "amino-gold"
+                      ? ["/images/app-fruitveg.jpg", "/images/app-vegetable.jpg", "/images/app-rice.jpg", "/images/app-golf.jpg"]
+                      : null;
                   return (
                     <div key={i} className="bg-white rounded-2xl overflow-hidden border border-sage/20">
                       <div className="relative aspect-[16/7] overflow-hidden">
-                        <Image src={appImages[i] ?? appImages[0]} alt={app.title} fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
+                        {appImages ? (
+                          <Image src={appImages[i] ?? appImages[0]} alt={app.title} fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
+                        ) : (
+                          <div className="absolute inset-0 bg-forest" />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                         <div className="absolute bottom-3 left-4 flex items-center gap-2">
                           <span className="w-7 h-7 rounded-full bg-forest/90 text-leaf-bright text-xs font-bold flex items-center justify-center flex-shrink-0">
@@ -248,18 +259,18 @@ export default function ProductDetailClient({ id }: Props) {
         <section className="bg-paper py-20">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-2xl font-bold text-forest mb-3">
-              {isHumus ? t.usageHumusTitle : t.usageAminoTitle}
+              {isGranule ? t.usageHumusTitle : t.usageAminoTitle}
             </h2>
             <p className="text-forest/50 text-sm mb-8">
-              {isHumus ? t.usageHumusNote : t.usageAminoNote}
+              {(product as any).usageNote ?? (isGranule ? t.usageHumusNote : t.usageAminoNote)}
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-forest text-paper">
                     <th className="text-left px-5 py-3 rounded-tl-xl font-medium">{t.cropZone}</th>
-                    <th className="text-left px-5 py-3 font-medium">{isHumus ? t.amountLabel : t.dilutionLabel}</th>
-                    <th className="text-left px-5 py-3 rounded-tr-xl font-medium">{isHumus ? t.timesHumus : t.timesAmino}</th>
+                    <th className="text-left px-5 py-3 font-medium">{isGranule ? t.amountLabel : t.dilutionLabel}</th>
+                    <th className="text-left px-5 py-3 rounded-tr-xl font-medium">{isGranule ? t.timesHumus : t.timesAmino}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -274,8 +285,8 @@ export default function ProductDetailClient({ id }: Props) {
               </table>
             </div>
 
-            {/* Composition bar (HUMAS only) */}
-            {isHumus && (
+            {/* Composition bar (products with certified ingredient ratios only) */}
+            {product.ingredients.length > 0 && (
               <div className="mt-14">
                 <h3 className="text-lg font-bold text-forest mb-2">{t.ingredientsTitle}</h3>
                 <p className="text-forest/40 text-xs mb-5">{t.ingredientsNote}</p>
@@ -307,15 +318,19 @@ export default function ProductDetailClient({ id }: Props) {
       {/* Compliance + other product */}
       <section className="bg-forest py-16">
         <div className="max-w-6xl mx-auto px-6">
-          {isHumus && (
+          {(product as any).hasCert && product.id === "humus-premium" && (
             <p className="text-sage/50 text-xs text-center mb-10">{t.complianceNote}</p>
           )}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
             <div>
               <p className="text-sage text-sm mb-1">{t.otherProduct}</p>
-              <Link href={`/products/${otherProduct.id}`} className="text-paper font-semibold hover:text-leaf-bright transition-colors">
-                {lang === "ko" ? otherProduct.name : otherProduct.nameEn} ({lang === "ko" ? otherProduct.nameEn : otherProduct.name}) →
-              </Link>
+              <div className="flex flex-wrap gap-x-5 gap-y-1">
+                {otherProducts.map((op) => (
+                  <Link key={op.id} href={`/products/${op.id}`} className="text-paper font-semibold hover:text-leaf-bright transition-colors">
+                    {lang === "ko" ? op.name : op.nameEn} ({lang === "ko" ? op.nameEn : op.name}) →
+                  </Link>
+                ))}
+              </div>
             </div>
             <Link href="/contact" className="px-6 py-3 rounded-full bg-leaf text-white font-semibold hover:bg-leaf-bright transition-colors flex-shrink-0">
               {t.ctaConsult}

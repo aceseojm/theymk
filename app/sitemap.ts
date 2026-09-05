@@ -4,7 +4,7 @@ const base = "https://the-ymk.com";
 const now = new Date();
 
 const audienceIds = ["agri-b2b", "golf", "oem", "export", "smartfarm", "home"];
-const productIds = ["humus-premium", "amino-gold"];
+const productIds = ["humus-premium", "amino-gold", "georoot", "alora-prime"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
